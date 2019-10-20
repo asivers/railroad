@@ -1,0 +1,22 @@
+html {
+	height: 100%
+}
+
+body {
+	background-image:url(maxresdefault.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+}
+
+#centerform {
+	margin: 0;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(255,255,255,.9);
+	width: 30%;
+	min-width: 450px;
+	border-radius: 10px 10px 10px 10px;
+}
