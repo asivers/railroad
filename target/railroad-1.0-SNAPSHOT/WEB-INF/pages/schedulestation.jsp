@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -24,30 +25,20 @@
             <h3>New Peterhof trains:</h3>
         </div>
     </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">756787</button>
+
+<%--    <c:forEach var="trainTime" items="${trainsByStationList}" varStatus="i">--%>
+    <c:forEach var="train" items="${trainsByStationList}" varStatus="i">
+        <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
+            <div class="col-4 offset-2 my-auto">
+<%--                <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">${trainTime.number}</button>--%>
+                <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">${train.number}</button>
+            </div>
+            <div class="col-4 offset-2 my-auto">
+<%--                <span style="font-weight:500">${trainTime.time}</span>--%>
+                <span style="font-weight:500">00:00</span>
+            </div>
         </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">15:00</span>
-        </div>
-    </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">234987</button>
-        </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">15:10</span>
-        </div>
-    </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">345542</button>
-        </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">16:00</span>
-        </div>
-    </div>
+    </c:forEach>
     <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px">
         <div class="col-8 offset-2 my-auto text-center">
             <a href="#" style="font-weight:700; display:none"><<</a>

@@ -8,11 +8,11 @@ import java.io.Serializable;
 public class Train implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "number")
+    @Column
     private int number;
 
     public int getId() {

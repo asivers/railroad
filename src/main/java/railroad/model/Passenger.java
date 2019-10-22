@@ -9,18 +9,18 @@ import java.util.Date;
 public class Passenger implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column
+    private String first_name;
 
-    @Column(name = "second_name")
-    private String secondName;
+    @Column
+    private String second_name;
 
-    @Column(name = "birth_date")
-    private Date birthDate;
+    @Column
+    private Date birth_date;
 
     public int getId() {
         return id;
@@ -31,27 +31,27 @@ public class Passenger implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first_name = firstName;
     }
 
     public String getSecondName() {
-        return secondName;
+        return second_name;
     }
 
     public void setSecondName(String secondName) {
-        this.secondName = secondName;
+        this.second_name = secondName;
     }
 
     public Date getBirthDate() {
-        return birthDate;
+        return birth_date;
     }
 
     public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+        this.birth_date = birthDate;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Passenger implements Serializable {
 
     @Override
     public String toString() {
-        return id + " " + firstName + " " + secondName + " " + birthDate;
+        return id + " " + first_name + " " + second_name + " " + birth_date;
     }
 }
 
