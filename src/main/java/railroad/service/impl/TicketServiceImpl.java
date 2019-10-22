@@ -27,16 +27,6 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public void delete(Ticket ticket) {
-        ticketDAO.delete(ticket);
-    }
-
-    @Override
-    public void edit(Ticket ticket) {
-        ticketDAO.edit(ticket);
-    }
-
-    @Override
     public Ticket getById(int id) {
         return ticketDAO.getById(id);
     }

@@ -27,16 +27,6 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public void delete(Station station) {
-        stationDAO.delete(station);
-    }
-
-    @Override
-    public void edit(Station station) {
-        stationDAO.edit(station);
-    }
-
-    @Override
     public Station getById(int id) {
         return stationDAO.getById(id);
     }

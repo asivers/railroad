@@ -2,6 +2,7 @@ package railroad.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.TrainDAO;
 import railroad.model.Train;
 import railroad.service.TrainService;
@@ -17,26 +18,19 @@ public class TrainServiceImpl implements TrainService {
     }
 
     @Override
+    @Transactional
     public List<Train> allTrains() {
         return trainDAO.allTrains();
     }
 
     @Override
+    @Transactional
     public void add(Train train) {
         trainDAO.add(train);
     }
 
     @Override
-    public void delete(Train train) {
-        trainDAO.delete(train);
-    }
-
-    @Override
-    public void edit(Train train) {
-        trainDAO.edit(train);
-    }
-
-    @Override
+    @Transactional
     public Train getById(int id) {
         return trainDAO.getById(id);
     }
