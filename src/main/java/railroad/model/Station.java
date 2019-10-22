@@ -12,7 +12,7 @@ public class Station implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "station_name")
     private String stationName;
 
     public int getId() {

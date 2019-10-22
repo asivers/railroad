@@ -13,13 +13,13 @@ public class Passenger implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "secondName")
+    @Column(name = "second_name")
     private String secondName;
 
-    @Column(name = "birthDate")
+    @Column(name = "birth_date")
     private Date birthDate;
 
     public int getId() {
