@@ -1,10 +1,12 @@
 package railroad.dao.impl;
 
+import org.springframework.stereotype.Repository;
 import railroad.dao.StationDAO;
 import railroad.model.Station;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class StationDAOImpl implements StationDAO {
     private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
     private static Map<Integer, Station> stations = new HashMap<>();
@@ -12,7 +14,7 @@ public class StationDAOImpl implements StationDAO {
     static {
         Station station1 = new Station();
         station1.setId(AUTO_ID.getAndIncrement());
-        station1.setName("Dachnoe");
+        station1.setStationName("Dachnoe");
         stations.put(station1.getId(), station1);
     }
 

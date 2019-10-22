@@ -1,14 +1,20 @@
 package railroad.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import railroad.dao.TrainDAO;
-import railroad.dao.impl.TrainDAOImpl;
 import railroad.model.Train;
 import railroad.service.TrainService;
-
 import java.util.List;
 
+@Service
 public class TrainServiceImpl implements TrainService {
-    private TrainDAO trainDAO = new TrainDAOImpl();
+    private TrainDAO trainDAO;
+
+    @Autowired
+    public void setTrainDAO(TrainDAO trainDAO) {
+        this.trainDAO = trainDAO;
+    }
 
     @Override
     public List<Train> allTrains() {

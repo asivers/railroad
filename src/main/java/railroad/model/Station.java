@@ -13,7 +13,7 @@ public class Station implements Serializable {
     private int id;
 
     @Column(name = "name")
-    private String name;
+    private String stationName;
 
     public int getId() {
         return id;
@@ -23,12 +23,12 @@ public class Station implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getStationName() {
+        return stationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Station implements Serializable {
 
     @Override
     public String toString() {
-        return id + " " + name;
+        return id + " " + stationName;
     }
 }
 

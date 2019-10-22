@@ -1,10 +1,12 @@
 package railroad.dao.impl;
 
+import org.springframework.stereotype.Repository;
 import railroad.dao.TrainDAO;
 import railroad.model.Train;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class TrainDAOImpl implements TrainDAO {
     private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
     private static Map<Integer, Train> trains = new HashMap<>();
