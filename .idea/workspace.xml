@@ -7,18 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="202a6faf-06ef-401e-8069-539666470580" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/controller/StationTrainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/StationTrainDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationTrainDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/model/StationTrain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/service/StationTrainService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/service/impl/StationTrainServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/controller/TrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/controller/TrainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/TrainDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/TrainDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TrainDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TrainDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/service/TrainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/service/TrainService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/service/impl/TrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/service/impl/TrainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosestation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosestation.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,6 +232,7 @@
       <workItem from="1571756132946" duration="244000" />
       <workItem from="1571756504472" duration="128000" />
       <workItem from="1571757738497" duration="3627000" />
+      <workItem from="1571761780423" duration="867000" />
     </task>
     <servers />
   </component>

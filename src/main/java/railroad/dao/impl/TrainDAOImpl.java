@@ -28,9 +28,9 @@ public class TrainDAOImpl implements TrainDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Train> trainsByStation(Station station) {
+    public List<Train> trainsByStation(String stationName) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("SELECT Train.number, StationTrain.time FROM Train INNER JOIN StationTrain ON Train.id = StationTrain.train_id INNER JOIN Station ON Station.id = StationTrain.station_id WHERE Station.id = 1").list();
+        return session.createQuery("SELECT Train.number, StationTrain.time FROM Train INNER JOIN StationTrain ON Train.id = StationTrain.train_id INNER JOIN Station ON Station.id = StationTrain.station_id WHERE Station.stationName = :stationName").list();
     }
 
     @Override

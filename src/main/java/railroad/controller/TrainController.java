@@ -30,8 +30,8 @@ public class TrainController {
     }
 
     @RequestMapping(value = "/trainsbystation", method = RequestMethod.POST)
-    public ModelAndView trainsByStation(@ModelAttribute("station") Station station) {
-        List<Train> trainsByStation = trainService.trainsByStation(station);
+    public ModelAndView trainsByStation(@ModelAttribute("station") String stationName) {
+        List<Train> trainsByStation = trainService.trainsByStation(stationName);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/schedulestation");
         modelAndView.addObject("trainsByStationList", trainsByStation);
