@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import railroad.model.Station;
 import railroad.model.Train;
 import railroad.service.TrainService;
 import java.util.List;
@@ -25,6 +26,15 @@ public class TrainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("trains");
         modelAndView.addObject("trainsList", trains);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/trainsbystation", method = RequestMethod.POST)
+    public ModelAndView trainsByStation(@ModelAttribute("station") Station station) {
+        List<Train> trainsByStation = trainService.trainsByStation(station);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/schedulestation");
+        modelAndView.addObject("trainsByStationList", trainsByStation);
         return modelAndView;
     }
 
