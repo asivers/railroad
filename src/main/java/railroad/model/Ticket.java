@@ -8,14 +8,14 @@ import java.io.Serializable;
 public class Ticket implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "train_id")
+    @Column
     private int train_id;
 
-    @Column(name = "passenger_id")
+    @Column
     private int passenger_id;
 
     public int getId() {

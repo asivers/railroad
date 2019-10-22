@@ -9,14 +9,14 @@ import java.sql.Time;
 public class StationTrain implements Serializable {
 
     @Id
-    @Column(name = "station_id")
+    @Column
     private int station_id;
 
     @Id
-    @Column(name = "station_id")
+    @Column
     private int train_id;
 
-    @Column(name = "time")
+    @Column
     private Time time;
 
     public int getStationId() {
@@ -35,11 +35,11 @@ public class StationTrain implements Serializable {
         this.train_id = train_id;
     }
 
-    public Time getTrainTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTrainTime(Time time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 

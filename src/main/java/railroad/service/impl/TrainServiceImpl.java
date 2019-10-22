@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.TrainDAO;
 import railroad.model.Station;
 import railroad.model.Train;
+import railroad.model.TrainTime;
 import railroad.service.TrainService;
 import java.util.List;
 
@@ -26,7 +27,10 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     @Transactional
-    public List<Train> trainsByStation(String stationName) {
+//    public List<TrainTime> trainsByStation(String stationName) {
+//        return trainDAO.trainsByStation(stationName);
+//    }
+    public List<Integer> trainsByStation(String stationName) {
         return trainDAO.trainsByStation(stationName);
     }
 

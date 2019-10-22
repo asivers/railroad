@@ -42,4 +42,5 @@ public class MainController {
         modelAndView.setViewName("choosestation");
         return modelAndView;
     }
+
 }

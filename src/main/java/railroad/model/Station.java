@@ -8,12 +8,12 @@ import java.io.Serializable;
 public class Station implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "station_name")
-    private String stationName;
+    @Column
+    private String station_name;
 
     public int getId() {
         return id;
@@ -24,11 +24,11 @@ public class Station implements Serializable {
     }
 
     public String getStationName() {
-        return stationName;
+        return station_name;
     }
 
     public void setStationName(String stationName) {
-        this.stationName = stationName;
+        this.station_name = stationName;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Station implements Serializable {
 
     @Override
     public String toString() {
-        return id + " " + stationName;
+        return id + " " + station_name;
     }
 }
 
