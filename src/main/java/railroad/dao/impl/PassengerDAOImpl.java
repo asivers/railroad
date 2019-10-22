@@ -1,44 +1,39 @@
 package railroad.dao.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import railroad.dao.PassengerDAO;
 import railroad.model.Passenger;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class PassengerDAOImpl implements PassengerDAO {
-    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
-    private static Map<Integer, Passenger> passengers = new HashMap<>();
 
-    static {
-        Passenger passenger1 = new Passenger();
-        passenger1.setId(AUTO_ID.getAndIncrement());
-        passenger1.setName("Dachnoe");
-        passengers.put(passenger1.getId(), passenger1);
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Passenger> allPassengers() {
-        return new ArrayList<>(passengers.values());
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Passenger").list();
     }
 
     @Override
     public void add(Passenger passenger) {
-        passenger.setId(AUTO_ID.getAndIncrement());
-        passengers.put(passenger.getId(), passenger);
-    }
-
-    @Override
-    public void delete(Passenger passenger) {
-        passengers.remove(passenger.getId());
-    }
-
-    @Override
-    public void edit(Passenger passenger) {
-        passengers.put(passenger.getId(), passenger);
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(passenger);
     }
 
     @Override
     public Passenger getById(int id) {
-        return passengers.get(id);
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Passenger.class, id);
     }
 }

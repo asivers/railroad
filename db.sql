@@ -4,7 +4,7 @@ USE railways;
 
 CREATE TABLE `railways`.`stations` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `station_name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `railways`.`trains` (
@@ -14,9 +14,9 @@ CREATE TABLE `railways`.`trains` (
 
 CREATE TABLE `railways`.`passengers` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `surname` VARCHAR(45) NOT NULL,
-  `birthday` DATE NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `second_name` VARCHAR(45) NOT NULL,
+  `birth_date` DATE NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `railways`.`stations_trains` (
@@ -59,28 +59,28 @@ ADD CONSTRAINT `fk_tickets_passenger_id`
   ON DELETE CASCADE
   ON UPDATE NO ACTION;
 
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Spb-Balt');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Bronevaya');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Leninskiy');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Dachnoe');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Ulyanka');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Ligovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Sosnovaya Polyana');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Sergievo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Strelna');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Krasnye Zori');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Novy Peterhof');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Stary Peterhof');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Devyatkino');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Lavriki');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Kapitolovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Kuzmolovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Toksovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Kavgolovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Oselki');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Gorelovo');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Skachki');
-INSERT INTO `railways`.`stations` (`name`) VALUES ('Krasnoe selo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Spb-Balt');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Bronevaya');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Leninskiy');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Dachnoe');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Ulyanka');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Ligovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Sosnovaya Polyana');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Sergievo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Strelna');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Krasnye Zori');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Novy Peterhof');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Stary Peterhof');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Devyatkino');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Lavriki');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Kapitolovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Kuzmolovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Toksovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Kavgolovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Oselki');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Gorelovo');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Skachki');
+INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Krasnoe selo');
 
 INSERT INTO `railways`.`trains` (`number`) VALUES ('123456');
 INSERT INTO `railways`.`trains` (`number`) VALUES ('234567');
@@ -191,18 +191,18 @@ INSERT INTO `railways`.`stations_trains` (`station_id`, `train_id`, `time`) VALU
 INSERT INTO `railways`.`stations_trains` (`station_id`, `train_id`, `time`) VALUES ('14', '10', '21:15');
 INSERT INTO `railways`.`stations_trains` (`station_id`, `train_id`, `time`) VALUES ('13', '10', '21:18');
 
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Harry', 'Potter', '1981-01-01');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Tyrion', 'Lannister', '1970-02-02');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Frodo', 'Baggins', '1982-03-03');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Tony', 'Montana', '1964-04-04');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('John', 'Watson', '1959-05-05');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Rick', 'Sanchez', '1949-06-06');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Eric', 'Cartman', '1996-07-07');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Peter', 'Parker', '1989-08-08');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Anakin', 'Skywalker', '1970-09-09');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Michael', 'Corleone', '1962-10-10');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Sarah', 'Connor', '1970-11-11');
-INSERT INTO `railways`.`passengers` (`name`, `surname`, `birthday`) VALUES ('Jack', 'Sparrow', '1977-12-12');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Harry', 'Potter', '1981-01-01');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Tyrion', 'Lannister', '1970-02-02');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Frodo', 'Baggins', '1982-03-03');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Tony', 'Montana', '1964-04-04');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('John', 'Watson', '1959-05-05');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Rick', 'Sanchez', '1949-06-06');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Eric', 'Cartman', '1996-07-07');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Peter', 'Parker', '1989-08-08');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Anakin', 'Skywalker', '1970-09-09');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Michael', 'Corleone', '1962-10-10');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Sarah', 'Connor', '1970-11-11');
+INSERT INTO `railways`.`passengers` (`first_name`, `second_name`, `birth_date`) VALUES ('Jack', 'Sparrow', '1977-12-12');
 
 INSERT INTO `railways`.`tickets` (`train_id`, `passenger_id`) VALUES ('1', '1');
 INSERT INTO `railways`.`tickets` (`train_id`, `passenger_id`) VALUES ('1', '2');

@@ -1,4 +1,3 @@
-/*
 package railroad.config;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
@@ -48,7 +47,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("testgroup.filmography.model");
+        sessionFactory.setPackagesToScan("railroad.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -60,4 +59,3 @@ public class HibernateConfig {
         return transactionManager;
     }
 }
-*/
