@@ -33,8 +33,7 @@ public class TrainDAOImpl implements TrainDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-//    public List<TrainTime> trainsByStation(String stationName) {
-    public List<Integer> trainsByStation(String stationName) {
+    public List<TrainTime> trainsByStation(String stationName) {
         Session session = sessionFactory.getCurrentSession();
 
         List<Integer> trainNumbers = session.createQuery("SELECT t.number FROM Train as t INNER JOIN StationTrain as st ON t.id = st.train_id INNER JOIN Station as s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).list();
@@ -49,15 +48,7 @@ public class TrainDAOImpl implements TrainDAO {
         for (int i = 0; i < trainNumbers.size(); i++)
             trainsTimes.add(new TrainTime(trainNumbers.get(i), stopTimesUTC.get(i)));
 
-        for (int i = 0; i < trainsTimes.size(); i++) {
-            System.out.println(trainsTimes.get(i).getNumber());
-            System.out.println(trainsTimes.get(i).getTime());
-            System.out.println();
-        }
-
-
-
-        return session.createQuery("SELECT Train.number FROM Train").list();
+        return trainsTimes;
     }
 
     @Override

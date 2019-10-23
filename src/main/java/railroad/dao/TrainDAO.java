@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface TrainDAO {
     List<Train> allTrains();
-//    List<TrainTime> trainsByStation(String stationName);
-    List<Integer> trainsByStation(String stationName);
+    List<TrainTime> trainsByStation(String stationName);
     void add(Train train);
     Train getById(int id);
 }

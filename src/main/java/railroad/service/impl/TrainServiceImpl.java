@@ -27,12 +27,7 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     @Transactional
-//    public List<TrainTime> trainsByStation(String stationName) {
-//        return trainDAO.trainsByStation(stationName);
-//    }
-    public List<Integer> trainsByStation(String stationName) {
-        return trainDAO.trainsByStation(stationName);
-    }
+    public List<TrainTime> trainsByStation(String stationName) { return trainDAO.trainsByStation(stationName); }
 
     @Override
     @Transactional
