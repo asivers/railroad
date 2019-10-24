@@ -7,28 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="202a6faf-06ef-401e-8069-539666470580" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/railroad/model/additional/StationTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/stationsbytrain.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/controller/StationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/controller/StationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/StationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/StationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/service/StationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/service/StationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/service/impl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/service/impl/StationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/scheduletrain.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/trainsbysearch.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/trainsbysearch.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/trainsbystation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/trainsbystation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/railroad/controller/StationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/railroad/controller/StationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/railroad/dao/StationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/railroad/dao/StationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/railroad/dao/impl/StationDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/railroad/dao/impl/StationDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/railroad/service/StationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/railroad/service/StationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/railroad/service/impl/StationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/railroad/service/impl/StationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/controller/StationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/controller/StationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/dao/StationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/dao/StationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/dao/impl/StationDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/dao/impl/StationDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/service/StationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/service/StationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/service/impl/StationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/classes/railroad/service/impl/StationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/pages/scheduletrain.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/model/Train.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/model/Train.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/stationsbytrain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/stationsbytrain.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -253,6 +235,8 @@
       <workItem from="1571940157741" duration="912000" />
       <workItem from="1571943741029" duration="2075000" />
       <workItem from="1571946892389" duration="2775000" />
+      <workItem from="1571950205751" duration="288000" />
+      <workItem from="1571950549680" duration="89000" />
     </task>
     <servers />
   </component>

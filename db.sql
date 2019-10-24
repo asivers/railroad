@@ -10,6 +10,7 @@ CREATE TABLE `railways`.`stations` (
 CREATE TABLE `railways`.`trains` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `number` INT NOT NULL,
+  `seats` INT NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `railways`.`passengers` (
@@ -82,16 +83,16 @@ INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Gorelovo');
 INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Skachki');
 INSERT INTO `railways`.`stations` (`station_name`) VALUES ('Krasnoe selo');
 
-INSERT INTO `railways`.`trains` (`number`) VALUES ('123456');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('234567');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('345678');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('456789');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('567890');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('987650');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('987654');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('876543');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('765432');
-INSERT INTO `railways`.`trains` (`number`) VALUES ('654321');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('123456', '3');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('234567', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('345678', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('456789', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('567890', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('987650', '3');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('987654', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('876543', '100');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('765432', '3');
+INSERT INTO `railways`.`trains` (`number`, `seats`) VALUES ('654321', '100');
 
 INSERT INTO `railways`.`stations_trains` (`station_id`, `train_id`, `time`) VALUES ('1', '1', '12:00');
 INSERT INTO `railways`.`stations_trains` (`station_id`, `train_id`, `time`) VALUES ('2', '1', '12:03');

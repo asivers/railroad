@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:30%">
+<div class="container" id="centerform" style="top:15%">
     <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div class="row" style="margin-top:7px; margin-bottom:5px; text-align:center">
         <div class="col-12" style="text-align:center;">

@@ -15,6 +15,9 @@ public class Train implements Serializable {
     @Column
     private int number;
 
+    @Column
+    private int seats;
+
     public int getId() {
         return id;
     }
@@ -31,6 +34,14 @@ public class Train implements Serializable {
         this.number = number;
     }
 
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other instanceof Train ? id == (((Train) other).id) : (other == this);
@@ -43,7 +54,7 @@ public class Train implements Serializable {
 
     @Override
     public String toString() {
-        return id + " " + number;
+        return id + " " + number + " " + seats;
     }
 }
 
