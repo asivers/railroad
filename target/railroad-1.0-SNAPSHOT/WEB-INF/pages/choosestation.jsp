@@ -28,7 +28,7 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Station</label>
             <div class="col-sm-9">
-                <input type="text" name="station" id="station" class="form-control">
+                <input type="text" name="station" class="form-control">
             </div>
         </div>
 

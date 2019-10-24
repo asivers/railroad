@@ -42,14 +42,14 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrive after</label>
             <div class="col-sm-9">
-                <input type="time" name="lowerTime" id="lowerTime" class="form-control">
+                <input type="time" name="lowerTime" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrive until</label>
             <div class="col-sm-9">
-                <input type="time" name="upperTime" id="upperTime" class="form-control">
+                <input type="time" name="upperTime" class="form-control">
             </div>
         </div>
 

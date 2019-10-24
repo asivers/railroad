@@ -34,7 +34,7 @@
             <span style="font-weight:700">Time</span>
         </div>
         <div class="col-3 my-auto">
-            <div style="margin-left:5px">
+            <div style="margin-left:12px">
                 <span style="font-weight:700">Departure</span>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <span style="font-weight:700">Time</span>
         </div>
         <div class="col-3 my-auto">
-            <div style="margin-left:5px">
+            <div style="margin-left:12px">
                 <span style="font-weight:700">Arrival</span>
             </div>
         </div>
@@ -61,17 +61,17 @@
                 <span style="font-weight:500">${TrainSearch.time1}</span>
             </div>
             <div class="col-3 my-auto">
-                <div style="margin-left:5px">
-                    <a href="#" style="font-weight:500; text-decoration:underline">${DepartureStationName}</a>
-                </div>
+                <form action="/trainsbystation" method="POST">
+                    <button type="submit" name="station" value="${DepartureStationName}" class="btn btn-link" style="font-weight:500; margin-bottom:-15px">${DepartureStationName}</button>
+                </form>
             </div>
             <div class="col-1 my-auto">
                 <span style="font-weight:500">${TrainSearch.time2}</span>
             </div>
             <div class="col-3 my-auto">
-                <div style="margin-left:5px">
-                    <a href="#" style="font-weight:500; text-decoration:underline">${ArrivalStationName}</a>
-                </div>
+                <form action="/trainsbystation" method="POST">
+                    <button type="submit" name="station" value="${ArrivalStationName}" class="btn btn-link" style="font-weight:500; margin-bottom:-15px">${ArrivalStationName}</button>
+                </form>
             </div>
             <div class="col-2 my-auto">
                 <button type="submit" class="btn btn-success" style="margin-top:5px; margin-bottom:5px">Buy</button>
