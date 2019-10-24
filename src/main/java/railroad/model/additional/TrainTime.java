@@ -1,14 +1,13 @@
-package railroad.model;
+package railroad.model.additional;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 public class TrainTime {
 
     private int number;
-    private Time time;
+    private String time;
 
-    public TrainTime(int number, Time time) {
+    public TrainTime(int number, String time) {
         this.number = number;
         this.time = time;
     }
@@ -21,11 +20,11 @@ public class TrainTime {
         this.number = number;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

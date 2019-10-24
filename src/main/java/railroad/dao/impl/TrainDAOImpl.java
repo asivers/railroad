@@ -2,14 +2,12 @@ package railroad.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import railroad.dao.TrainDAO;
-import railroad.model.Station;
-import railroad.model.StationTrain;
 import railroad.model.Train;
-import railroad.model.TrainTime;
+import railroad.model.additional.TrainTime;
+import railroad.model.additional.TrainTimeTime;
 
 import java.sql.Time;
 import java.util.*;
@@ -36,19 +34,43 @@ public class TrainDAOImpl implements TrainDAO {
     public List<TrainTime> trainsByStation(String stationName) {
         Session session = sessionFactory.getCurrentSession();
 
-        List<Integer> trainNumbers = session.createQuery("SELECT t.number FROM Train as t INNER JOIN StationTrain as st ON t.id = st.train_id INNER JOIN Station as s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).list();
+        List<Integer> trainNumbers = session.createQuery("SELECT t.number FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).list();
 
-        List<Time> stopTimes = session.createQuery("SELECT st.time FROM Train as t INNER JOIN StationTrain as st ON t.id = st.train_id INNER JOIN Station as s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).list();
+        List<Time> stopTimes = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).list();
         List<Time> stopTimesUTC = new ArrayList<>();
         for (Time t : stopTimes) {
             stopTimesUTC.add(new Time(t.getTime() - 10800000));
         }
 
+        String tmpStringTime = "";
         List<TrainTime> trainsTimes = new ArrayList<>();
-        for (int i = 0; i < trainNumbers.size(); i++)
-            trainsTimes.add(new TrainTime(trainNumbers.get(i), stopTimesUTC.get(i)));
+        for (int i = 0; i < trainNumbers.size(); i++) {
+            tmpStringTime = stopTimesUTC.get(i).toString();
+            trainsTimes.add(new TrainTime(trainNumbers.get(i), tmpStringTime.substring(0, tmpStringTime.length() - 3)));
+        }
 
         return trainsTimes;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime) {
+        Session session = sessionFactory.getCurrentSession();
+
+        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2").setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).list();
+        List<TrainTimeTime> trainsBothTimes = new ArrayList<>();
+        String tmpStringTime1 = "";
+        String tmpStringTime2 = "";
+        for (Integer id : trainIDs) {
+            List<Integer> tmpNumber = session.createQuery("SELECT t.number FROM Train AS t WHERE t.id = :id").setParameter("id", id).list();
+            List<Time> tmpDepartureTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :departureStationName").setParameter("id", id).setParameter("departureStationName", departureStationName).list();
+            List<Time> tmpArrivalTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :arrivalStationName").setParameter("id", id).setParameter("arrivalStationName", arrivalStationName).list();
+            tmpStringTime1 = (new Time(tmpDepartureTime.get(0).getTime() - 10800000)).toString();
+            tmpStringTime2 = (new Time(tmpArrivalTime.get(0).getTime() - 10800000)).toString();
+            trainsBothTimes.add(new TrainTimeTime(tmpNumber.get(0), tmpStringTime1.substring(0, tmpStringTime1.length() - 3), tmpStringTime2.substring(0, tmpStringTime2.length() - 3)));
+        }
+
+        return trainsBothTimes;
     }
 
     @Override

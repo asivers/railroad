@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -19,7 +20,7 @@
 
 
 <body>
-<div class="container" id="centerform" style="top:30%; width:60%; min-width:500px">
+<div class="container" id="centerform" style="top:15%; width:60%; min-width:500px">
     <div class="row" style="margin-top:7px; margin-bottom:5px; text-align:center">
         <div class="col-12" style="text-align:center;">
             <h3>List of trains:</h3>
@@ -49,54 +50,34 @@
 
         </div>
     </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-2 my-auto">
-            <button type="submit" class="btn btn-primary" style="margin-left:-5px; margin-top:5px; margin-bottom:5px">756435</button>
-        </div>
-        <div class="col-1 my-auto">
-            <span style="font-weight:500">14:40</span>
-        </div>
-        <div class="col-3 my-auto">
-            <div style="margin-left:5px">
-                <a href="#" style="font-weight:500; text-decoration:underline">New Peterhof</a>
+    <c:set var = "DepartureStationName" value = "${DepartureStationName}"/>
+    <c:set var = "ArrivalStationName" value = "${ArrivalStationName}"/>
+    <c:forEach var="TrainSearch" items="${TrainSearchList}" varStatus="i">
+        <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
+            <div class="col-2 my-auto">
+                <button type="submit" class="btn btn-primary" style="margin-left:-5px; margin-top:5px; margin-bottom:5px">${TrainSearch.number}</button>
+            </div>
+            <div class="col-1 my-auto">
+                <span style="font-weight:500">${TrainSearch.time1}</span>
+            </div>
+            <div class="col-3 my-auto">
+                <div style="margin-left:5px">
+                    <a href="#" style="font-weight:500; text-decoration:underline">${DepartureStationName}</a>
+                </div>
+            </div>
+            <div class="col-1 my-auto">
+                <span style="font-weight:500">${TrainSearch.time2}</span>
+            </div>
+            <div class="col-3 my-auto">
+                <div style="margin-left:5px">
+                    <a href="#" style="font-weight:500; text-decoration:underline">${ArrivalStationName}</a>
+                </div>
+            </div>
+            <div class="col-2 my-auto">
+                <button type="submit" class="btn btn-success" style="margin-top:5px; margin-bottom:5px">Buy</button>
             </div>
         </div>
-        <div class="col-1 my-auto">
-            <span style="font-weight:500">15:00</span>
-        </div>
-        <div class="col-3 my-auto">
-            <div style="margin-left:5px">
-                <a href="#" style="font-weight:500; text-decoration:underline">Dachnoe</a>
-            </div>
-        </div>
-        <div class="col-2 my-auto">
-            <button type="submit" class="btn btn-success" style="margin-top:5px; margin-bottom:5px">Buy</button>
-        </div>
-    </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-2 my-auto">
-            <button type="submit" class="btn btn-primary" style="margin-left:-5px; margin-top:5px; margin-bottom:5px">234987</button>
-        </div>
-        <div class="col-1 my-auto">
-            <span style="font-weight:500">19:20</span>
-        </div>
-        <div class="col-3 my-auto">
-            <div style="margin-left:5px">
-                <a href="#" style="font-weight:500; text-decoration:underline">Ulyanka</a>
-            </div>
-        </div>
-        <div class="col-1 my-auto">
-            <span style="font-weight:500">19:50</span>
-        </div>
-        <div class="col-3 my-auto">
-            <div style="margin-left:5px">
-                <a href="#" style="font-weight:500; text-decoration:underline">Spb-Balt</a>
-            </div>
-        </div>
-        <div class="col-2 my-auto">
-            <button type="submit" class="btn btn-success" style="margin-top:5px; margin-bottom:5px;">Buy</button>
-        </div>
-    </div>
+    </c:forEach>
     <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px">
         <div class="col-8 offset-2 my-auto text-center">
             <a href="#" style="font-weight:700; display:none"><<</a>
@@ -104,7 +85,7 @@
             <a href="#" style="font-weight:700">>></a>
         </div>
         <div class="col-2">
-            <button type="submit" class="btn btn-secondary">Back</button>
+            <a href="/findtrain" class="btn btn-secondary" role="button">Back</a>
         </div>
     </div>
 </div>

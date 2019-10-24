@@ -24,7 +24,7 @@
         <h3>Choose the station</h3>
     </div>
     <c:url value="/trainsbystation" var="var"/>
-    <form  action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
+    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Station</label>
             <div class="col-sm-9">

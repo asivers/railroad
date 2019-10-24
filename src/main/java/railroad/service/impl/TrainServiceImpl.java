@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.TrainDAO;
-import railroad.model.Station;
 import railroad.model.Train;
-import railroad.model.TrainTime;
+import railroad.model.additional.TrainTime;
+import railroad.model.additional.TrainTimeTime;
 import railroad.service.TrainService;
+
+import java.sql.Time;
 import java.util.List;
 
 @Service
@@ -28,6 +30,10 @@ public class TrainServiceImpl implements TrainService {
     @Override
     @Transactional
     public List<TrainTime> trainsByStation(String stationName) { return trainDAO.trainsByStation(stationName); }
+
+    @Override
+    @Transactional
+    public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime) { return trainDAO.trainsBySearch(departureStationName, arrivalStationName, lowerTime, upperTime); }
 
     @Override
     @Transactional

@@ -27,11 +27,6 @@
         </div>
     </div>
 
-    <c:forEach var="t" items="${zzzzz}" varStatus="i">
-        <tr>
-            <td>${zzzzz}</td>
-        </tr>
-    </c:forEach>
     <c:forEach var="NumberTime" items="${NumberTimeList}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
             <div class="col-4 offset-2 my-auto">

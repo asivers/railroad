@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -22,31 +23,39 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Train search</h3>
     </div>
-    <form style="margin-top:10px; margin-bottom:10px">
+    <c:url value="/trainsbysearch" var="var"/>
+    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Departure</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control">
+                <input type="text" name="departureStation" id="departureStation" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrival</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control">
+                <input type="text" name="arrivalStation" id="arrivalStation" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="time">Arrive until</label>
+            <label class="col-sm-3 col-form-label">Arrive after</label>
             <div class="col-sm-9">
-                <input type="time" class="form-control">
+                <input type="time" name="lowerTime" id="lowerTime" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Arrive until</label>
+            <div class="col-sm-9">
+                <input type="time" name="upperTime" id="upperTime" class="form-control">
             </div>
         </div>
 
         <div class="row" style="margin-left:1px; margin-right:1px">
             <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Find</button>
-            <button type="submit" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Back</button>
+            <a href="/usermain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>
 </div>
