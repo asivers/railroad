@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -19,35 +20,24 @@
 
 <body>
 <div class="container" id="centerform" style="top:30%">
+    <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div class="row" style="margin-top:7px; margin-bottom:5px; text-align:center">
         <div class="col-12" style="text-align:center;">
-            <h3>Train 756467 stops:</h3>
+            <h3>Train ${TrainNumber} stops:</h3>
         </div>
     </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <a href="#" style="font-weight:500; text-decoration:underline">New Peterhof</a>
+    <c:forEach var="StationTime" items="${StationTimeList}" varStatus="i">
+        <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
+            <div class="col-4 offset-2 my-auto">
+                <form action="/trainsbystation" method="POST">
+                    <button type="submit" name="station" value="${StationTime.stationName}" class="btn btn-link" style="font-weight:500; margin-bottom:-15px">${StationTime.stationName}</button>
+                </form>
+            </div>
+            <div class="col-4 offset-2 my-auto">
+                <span style="font-weight:500">${StationTime.time}</span>
+            </div>
         </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">15:00</span>
-        </div>
-    </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <a href="#" style="font-weight:500; text-decoration:underline">Old Peterhof</a>
-        </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">15:10</span>
-        </div>
-    </div>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-        <div class="col-4 offset-2 my-auto">
-            <a href="#" style="font-weight:500; text-decoration:underline">Lomonosov</a>
-        </div>
-        <div class="col-4 offset-2 my-auto">
-            <span style="font-weight:500">16:00</span>
-        </div>
-    </div>
+    </c:forEach>
     <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px">
         <div class="col-8 offset-2 my-auto text-center">
             <a href="#" style="font-weight:700; display:none"><<</a>
@@ -55,7 +45,7 @@
             <a href="#" style="font-weight:700">>></a>
         </div>
         <div class="col-2">
-            <button type="submit" class="btn btn-secondary">Back</button>
+            <a href="/usermain" class="btn btn-secondary" role="button">Back</a>
         </div>
     </div>
 </div>

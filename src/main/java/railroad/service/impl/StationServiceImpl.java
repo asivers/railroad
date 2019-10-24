@@ -2,8 +2,10 @@ package railroad.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.StationDAO;
 import railroad.model.Station;
+import railroad.model.additional.StationTime;
 import railroad.service.StationService;
 import java.util.List;
 
@@ -12,22 +14,21 @@ public class StationServiceImpl implements StationService {
     private StationDAO stationDAO;
 
     @Autowired
-    public void setStationDAO(StationDAO stationDAO) {
-        this.stationDAO = stationDAO;
-    }
+    public void setStationDAO(StationDAO stationDAO) { this.stationDAO = stationDAO; }
 
     @Override
-    public List<Station> allStations() {
-        return stationDAO.allStations();
-    }
+    @Transactional
+    public List<Station> allStations() { return stationDAO.allStations(); }
 
     @Override
-    public void add(Station station) {
-        stationDAO.add(station);
-    }
+    @Transactional
+    public List<StationTime> stationsByTrain(int trainNumber) { return stationDAO.stationsByTrain(trainNumber); }
 
     @Override
-    public Station getById(int id) {
-        return stationDAO.getById(id);
-    }
+    @Transactional
+    public void add(Station station) { stationDAO.add(station); }
+
+    @Override
+    @Transactional
+    public Station getById(int id) { return stationDAO.getById(id); }
 }

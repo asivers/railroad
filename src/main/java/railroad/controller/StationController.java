@@ -28,6 +28,15 @@ public class StationController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/stationsbytrain", method = RequestMethod.POST)
+    public ModelAndView stationsByTrain(@ModelAttribute("train") int trainNumber) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("stationsbytrain");
+        modelAndView.addObject("TrainNumber", trainNumber);
+        modelAndView.addObject("StationTimeList", stationService.stationsByTrain(trainNumber));
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/addstation", method = RequestMethod.POST)
     public ModelAndView addStation(@ModelAttribute("station") Station station) {
         ModelAndView modelAndView = new ModelAndView();

@@ -55,7 +55,9 @@
     <c:forEach var="TrainSearch" items="${TrainSearchList}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
             <div class="col-2 my-auto">
-                <button type="submit" class="btn btn-primary" style="margin-left:-5px; margin-top:5px; margin-bottom:5px">${TrainSearch.number}</button>
+                <form action="/stationsbytrain" method="POST">
+                    <button type="submit" name="train" value="${TrainSearch.number}" class="btn btn-primary" style="margin-left:-5px; margin-bottom:-15px">${TrainSearch.number}</button>
+                </form>
             </div>
             <div class="col-1 my-auto">
                 <span style="font-weight:500">${TrainSearch.time1}</span>

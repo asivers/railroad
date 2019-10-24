@@ -30,7 +30,9 @@
     <c:forEach var="NumberTime" items="${NumberTimeList}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
             <div class="col-4 offset-2 my-auto">
-                <button type="submit" class="btn btn-primary" style="margin-top:5px; margin-bottom:5px">${NumberTime.number}</button>
+                <form action="/stationsbytrain" method="POST">
+                    <button type="submit" name="train" value="${NumberTime.number}" class="btn btn-primary" style="margin-top: 5px; margin-bottom:-10px">${NumberTime.number}</button>
+                </form>
             </div>
             <div class="col-4 offset-2 my-auto">
                 <span style="font-weight:500">${NumberTime.time}</span>
@@ -44,7 +46,7 @@
             <a href="#" style="font-weight:700">>></a>
         </div>
         <div class="col-2">
-            <a href="/choosestation" class="btn btn-secondary" role="button">Back</a>
+            <a href="/usermain" class="btn btn-secondary" role="button">Back</a>
         </div>
     </div>
 </div>
