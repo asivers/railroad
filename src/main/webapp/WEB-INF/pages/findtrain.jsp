@@ -54,6 +54,7 @@
         </div>
 
         <div class="row" style="margin-left:1px; margin-right:1px">
+            <input type="text" name="page" value="1" class="form-control" style="display:none">
             <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Find</button>
             <a href="/usermain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>

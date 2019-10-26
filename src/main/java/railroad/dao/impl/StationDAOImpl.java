@@ -42,13 +42,13 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     public List<StationTime> stationsByTrain(int trainNumber, int page) {
         Session session = sessionFactory.getCurrentSession();
-        int onPage = 10;
+        int onPage = 8;
         List<Integer> stationIDs = session.createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<StationTime> stationsTimes = new ArrayList<>();
-        String trueStopTime = "";
+        String stopTime = "";
         for (Integer id : stationIDs) {
             String stationName = session.createQuery("SELECT s.station_name FROM Station AS s WHERE s.id = :id", String.class).setParameter("id", id).getSingleResult();
-            String stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.id = :id AND t.number = :trainNumber").setParameter("id", id).setParameter("trainNumber", trainNumber).getSingleResult().toString();
+            stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.id = :id AND t.number = :trainNumber").setParameter("id", id).setParameter("trainNumber", trainNumber).getSingleResult().toString();
             stopTime = TimeSupport.LongToTime(TimeToLong(stopTime) - 10800000);
             stationsTimes.add(new StationTime(stationName, stopTime));
         }

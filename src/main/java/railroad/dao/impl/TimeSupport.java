@@ -7,6 +7,8 @@ public class TimeSupport {
     }
 
     public static String LongToTime(long longTime) {
+        if (longTime < 0)
+            longTime += 86400000;
         String part1 = Long.toString(longTime / 3600000);
         if (part1.length() == 1)
             part1 = "0" + part1;

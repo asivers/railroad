@@ -42,13 +42,13 @@ public class TrainDAOImpl implements TrainDAO {
     @SuppressWarnings("unchecked")
     public List<TrainTime> trainsByStation(String stationName, int page) {
         Session session = sessionFactory.getCurrentSession();
-        int onPage = 10;
+        int onPage = 7;
         List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<TrainTime> trainsTimes = new ArrayList<>();
-        String trueStopTime = "";
+        String stopTime = "";
         for (Integer id : trainIDs) {
             int trainNumber = session.createQuery("SELECT t.number FROM Train AS t WHERE t.id = :id", Number.class).setParameter("id", id).getSingleResult().intValue();
-            String stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :stationName").setParameter("id", id).setParameter("stationName", stationName).getSingleResult().toString();
+            stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :stationName").setParameter("id", id).setParameter("stationName", stationName).getSingleResult().toString();
             stopTime = TimeSupport.LongToTime(TimeToLong(stopTime) - 10800000);
             trainsTimes.add(new TrainTime(trainNumber, stopTime));
         }
@@ -66,7 +66,7 @@ public class TrainDAOImpl implements TrainDAO {
     @SuppressWarnings("unchecked")
     public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime, int page) {
         Session session = sessionFactory.getCurrentSession();
-        int onPage = 10;
+        int onPage = 7;
         List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2").setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<TrainTimeTime> trainsBothTimes = new ArrayList<>();
         String trueDepartureTime = "";
