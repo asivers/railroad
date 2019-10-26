@@ -29,11 +29,19 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     @Transactional
-    public List<TrainTime> trainsByStation(String stationName) { return trainDAO.trainsByStation(stationName); }
+    public int trainsByStationCount(String stationName) { return trainDAO.trainsByStationCount(stationName); }
 
     @Override
     @Transactional
-    public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime) { return trainDAO.trainsBySearch(departureStationName, arrivalStationName, lowerTime, upperTime); }
+    public List<TrainTime> trainsByStation(String stationName, int page) { return trainDAO.trainsByStation(stationName, page); }
+
+    @Override
+    @Transactional
+    public int trainsBySearchCount(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime) { return trainDAO.trainsBySearchCount(departureStationName, arrivalStationName, lowerTime, upperTime); }
+
+    @Override
+    @Transactional
+    public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime, int page) { return trainDAO.trainsBySearch(departureStationName, arrivalStationName, lowerTime, upperTime, page); }
 
     @Override
     @Transactional

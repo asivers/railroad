@@ -32,6 +32,7 @@
             <div class="col-4 offset-2 my-auto">
                 <form action="/stationsbytrain" method="POST">
                     <button type="submit" name="train" value="${NumberTime.number}" class="btn btn-primary" style="margin-top: 5px; margin-bottom:-10px">${NumberTime.number}</button>
+                    <input type="text" name="page" value="1" class="form-control" style="display:none">
                 </form>
             </div>
             <div class="col-4 offset-2 my-auto">

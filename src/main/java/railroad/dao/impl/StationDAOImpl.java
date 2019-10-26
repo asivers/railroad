@@ -12,6 +12,8 @@ import railroad.model.additional.TrainTime;
 import java.sql.Time;
 import java.util.*;
 
+import static railroad.dao.impl.TimeSupport.TimeToLong;
+
 @Repository
 public class StationDAOImpl implements StationDAO {
 
@@ -31,24 +33,25 @@ public class StationDAOImpl implements StationDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<StationTime> stationsByTrain(int trainNumber) {
+    public int stationsByTrainCount(int trainNumber) {
         Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+    }
 
-        List<String> stationNames = session.createQuery("SELECT s.station_name FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).list();
-
-        List<Time> stopTimes = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).list();
-        List<Time> stopTimesUTC = new ArrayList<>();
-        for (Time t : stopTimes) {
-            stopTimesUTC.add(new Time(t.getTime() - 10800000));
-        }
-
-        String tmpStringTime = "";
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<StationTime> stationsByTrain(int trainNumber, int page) {
+        Session session = sessionFactory.getCurrentSession();
+        int onPage = 10;
+        List<Integer> stationIDs = session.createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<StationTime> stationsTimes = new ArrayList<>();
-        for (int i = 0; i < stationNames.size(); i++) {
-            tmpStringTime = stopTimesUTC.get(i).toString();
-            stationsTimes.add(new StationTime(stationNames.get(i), tmpStringTime.substring(0, tmpStringTime.length() - 3)));
+        String trueStopTime = "";
+        for (Integer id : stationIDs) {
+            String stationName = session.createQuery("SELECT s.station_name FROM Station AS s WHERE s.id = :id", String.class).setParameter("id", id).getSingleResult();
+            String stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.id = :id AND t.number = :trainNumber").setParameter("id", id).setParameter("trainNumber", trainNumber).getSingleResult().toString();
+            stopTime = TimeSupport.LongToTime(TimeToLong(stopTime) - 10800000);
+            stationsTimes.add(new StationTime(stationName, stopTime));
         }
-
         return stationsTimes;
     }
 

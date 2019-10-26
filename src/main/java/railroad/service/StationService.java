@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface StationService {
     List<Station> allStations();
-    List<StationTime> stationsByTrain(int trainNumber);
+    int stationsByTrainCount(int trainNumber);
+    List<StationTime> stationsByTrain(int trainNumber, int page);
     void add(Station station);
     Station getById(int id);
 }

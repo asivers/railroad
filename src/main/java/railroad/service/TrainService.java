@@ -9,8 +9,10 @@ import java.util.List;
 
 public interface TrainService {
     List<Train> allTrains();
-    List<TrainTime> trainsByStation(String stationName);
-    List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime);
+    int trainsByStationCount(String stationName);
+    List<TrainTime> trainsByStation(String stationName, int page);
+    int trainsBySearchCount(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime);
+    List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime, int page);
     void add(Train train);
     Train getById(int id);
 }

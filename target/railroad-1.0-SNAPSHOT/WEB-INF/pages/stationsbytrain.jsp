@@ -19,14 +19,14 @@
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:30%">
+<div class="container" id="centerform" style="top:15%">
     <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div class="row" style="margin-top:7px; margin-bottom:5px; text-align:center">
         <div class="col-12" style="text-align:center;">
             <h3>Train ${TrainNumber} stops:</h3>
         </div>
     </div>
-    <c:forEach var="StationTime" items="${StationTimeList}" varStatus="i">
+    <c:forEach var="StationTime" items="${StationsByTrain}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
             <div class="col-4 offset-2 my-auto">
                 <form action="/trainsbystation" method="POST">
@@ -38,13 +38,28 @@
             </div>
         </div>
     </c:forEach>
-    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px">
-        <div class="col-8 offset-2 my-auto text-center">
-            <a href="#" style="font-weight:700; display:none"><<</a>
-            <span style="font-weight:500; margin-left:5px; margin-right:5px;">Page 1 of 1</span>
-            <a href="#" style="font-weight:700">>></a>
+    <c:set var = "Page" value = "${Page}"/>
+    <c:set var = "PagesCount" value = "${PagesCount}"/>
+    <div class="row" style="margin-left:1px; margin-right:1px;">
+        <div class="col-1 offset-2 my-auto text-center">
+            <form action="/stationsbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page - 1}" class="btn btn-link" style="font-weight:900; ${Page == 1 ? "display:none" : ""}"><<</button>
+            </form>
         </div>
-        <div class="col-2">
+        <div class="col-3 offset-1 offset-right-1 my-auto text-center">
+            <form action="/stationsbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
+                 <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none">Page ${Page} of ${PagesCount}</button>
+            </form>
+        </div>
+        <div class="col-1 my-auto text-center">
+            <form action="/stationsbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page + 1}" class="btn btn-link" style="font-weight:900; ${Page == PagesCount ? "display:none" : ""}">>></button>
+            </form>
+        </div>
+        <div class="col-1 offset-2">
             <a href="/usermain" class="btn btn-secondary" role="button">Back</a>
         </div>
     </div>

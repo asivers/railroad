@@ -57,6 +57,7 @@
             <div class="col-2 my-auto">
                 <form action="/stationsbytrain" method="POST">
                     <button type="submit" name="train" value="${TrainSearch.number}" class="btn btn-primary" style="margin-left:-5px; margin-bottom:-15px">${TrainSearch.number}</button>
+                    <input type="text" name="page" value="1" class="form-control" style="display:none">
                 </form>
             </div>
             <div class="col-1 my-auto">

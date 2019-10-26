@@ -22,7 +22,11 @@ public class StationServiceImpl implements StationService {
 
     @Override
     @Transactional
-    public List<StationTime> stationsByTrain(int trainNumber) { return stationDAO.stationsByTrain(trainNumber); }
+    public int stationsByTrainCount(int trainNumber) { return stationDAO.stationsByTrainCount(trainNumber); }
+
+    @Override
+    @Transactional
+    public List<StationTime> stationsByTrain(int trainNumber, int page) { return stationDAO.stationsByTrain(trainNumber, page); }
 
     @Override
     @Transactional
