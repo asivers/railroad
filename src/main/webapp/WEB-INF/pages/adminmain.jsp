@@ -23,7 +23,7 @@
         <h3>Choose option</h3>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <button type="submit" class="btn btn-primary col-sm-5 offset-sm-1" style="margin-bottom:10px;">Add train</button>
+        <a href="addtrain" class="btn btn-primary col-sm-5 offset-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
         <button type="submit" class="btn btn-primary col-sm-4 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Add station</button>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -22,24 +23,25 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Enter as Admin</h3>
     </div>
-    <form style="margin-top:10px; margin-bottom:10px">
+    <c:url value="/adminmain" var="var"/>
+    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label" for="email">Email</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="email">
+                <input type="text" class="form-control" name="login" id="email">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label" for="password">Password</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" name="password" id="password">
             </div>
         </div>
 
         <div class="row" style="margin-left:1px; margin-right:1px">
             <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Login</button>
-            <button type="submit" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Back</button>
+            <a href="/" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>
 </div>

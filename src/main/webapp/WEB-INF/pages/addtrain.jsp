@@ -3,7 +3,7 @@
   Created by IntelliJ IDEA.
   User: siver
   Date: 20.10.2019
-  Time: 17:45
+  Time: 12:51
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,35 +15,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Enter as Admin</title>
+    <title>Home page</title>
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:30%">
+<div class="container" id="centerform">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Enter as Admin</h3>
+        <h3>Welcome!</h3>
     </div>
-    <c:url value="/adminmain" var="var"/>
-    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="email">Email</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" name="login" id="email">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="password">Password</label>
-            <div class="col-sm-9">
-                <input type="password" class="form-control" name="password" id="password">
-            </div>
-        </div>
-
-        <div class="row" style="margin-left:1px; margin-right:1px">
-            <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Login</button>
-            <a href="/" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
-        </div>
-    </form>
+    <div class="row" style="margin-left:1px; margin-right:1px">
+        <a href="/usermain" class="btn btn-primary col-sm-4 offset-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
+        <a href="/adminlogin" class="btn btn-primary col-sm-5 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
