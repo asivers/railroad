@@ -69,45 +69,57 @@ public class UserController {
 
     @RequestMapping(value = "/trainsbystation", method = RequestMethod.POST)
     public ModelAndView trainsByStation(@ModelAttribute("station") String stationName, @ModelAttribute("page") int page) {
-        int trainsCount = trainService.trainsByStationCount(stationName);
-        int pagesCount = (trainsCount + 6)/7;
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("trainsbystation");
-        modelAndView.addObject("TrainsByStation", trainService.trainsByStation(stationName, page));
-        modelAndView.addObject("StationName", stationName);
-        modelAndView.addObject("Page", page);
-        modelAndView.addObject("PagesCount", pagesCount);
+        int trainsCount = trainService.trainsByStationCount(stationName);
+        if (trainsCount == 0)
+            modelAndView.setViewName("notrainsfound");
+        else {
+            int pagesCount = (trainsCount + 6) / 7;
+            modelAndView.setViewName("trainsbystation");
+            modelAndView.addObject("TrainsByStation", trainService.trainsByStation(stationName, page));
+            modelAndView.addObject("StationName", stationName);
+            modelAndView.addObject("Page", page);
+            modelAndView.addObject("PagesCount", pagesCount);
+        }
         return modelAndView;
     }
 
     @RequestMapping(value = "/trainsbysearch", method = RequestMethod.POST)
     public ModelAndView trainsBySearch(@ModelAttribute("departureStation") String departureStationName, @ModelAttribute("arrivalStation") String arrivalStationName, @ModelAttribute("lowerTime") String lowerTimeString, @ModelAttribute("upperTime") String upperTimeString, @RequestParam(defaultValue = "1") int page) {
+        ModelAndView modelAndView = new ModelAndView();
         Time lowerTime = new Time((Integer.parseInt(lowerTimeString.substring(0, 2)) * 60 + Integer.parseInt(lowerTimeString.substring(3))) * 60000);
         Time upperTime = new Time((Integer.parseInt(upperTimeString.substring(0, 2)) * 60 + Integer.parseInt(upperTimeString.substring(3))) * 60000);
         int trainsCount = trainService.trainsBySearchCount(departureStationName, arrivalStationName, lowerTime, upperTime);
-        int pagesCount = (trainsCount + 6)/7;
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("trainsbysearch");
-        modelAndView.addObject("TrainsBySearch", trainService.trainsBySearch(departureStationName, arrivalStationName, lowerTime, upperTime, page));
-        modelAndView.addObject("DepartureStationName", departureStationName);
-        modelAndView.addObject("LowerTime", lowerTime);
-        modelAndView.addObject("UpperTime", upperTime);
-        modelAndView.addObject("ArrivalStationName", arrivalStationName);
-        modelAndView.addObject("Page", page);
-        modelAndView.addObject("PagesCount", pagesCount);
+        if (trainsCount == 0)
+            modelAndView.setViewName("notrainsfound");
+        else {
+            int pagesCount = (trainsCount + 6) / 7;
+            modelAndView.setViewName("trainsbysearch");
+            modelAndView.addObject("TrainsBySearch", trainService.trainsBySearch(departureStationName, arrivalStationName, lowerTime, upperTime, page));
+            modelAndView.addObject("DepartureStationName", departureStationName);
+            modelAndView.addObject("LowerTime", lowerTime);
+            modelAndView.addObject("UpperTime", upperTime);
+            modelAndView.addObject("ArrivalStationName", arrivalStationName);
+            modelAndView.addObject("Page", page);
+            modelAndView.addObject("PagesCount", pagesCount);
+        }
         return modelAndView;
     }
 
     @RequestMapping(value = "/stationsbytrain", method = RequestMethod.POST)
     public ModelAndView stationsByTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("page") int page) {
-        int stationsCount = stationService.stationsByTrainCount(trainNumber);
-        int pagesCount = (stationsCount + 7)/8;
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("stationsbytrain");
-        modelAndView.addObject("StationsByTrain", stationService.stationsByTrain(trainNumber, page));
-        modelAndView.addObject("TrainNumber", trainNumber);
-        modelAndView.addObject("Page", page);
-        modelAndView.addObject("PagesCount", pagesCount);
+        int stationsCount = stationService.stationsByTrainCount(trainNumber);
+        if (stationsCount == 0)
+            modelAndView.setViewName("nostationsfound");
+        else {
+            int pagesCount = (stationsCount + 7) / 8;
+            modelAndView.setViewName("stationsbytrain");
+            modelAndView.addObject("StationsByTrain", stationService.stationsByTrain(trainNumber, page));
+            modelAndView.addObject("TrainNumber", trainNumber);
+            modelAndView.addObject("Page", page);
+            modelAndView.addObject("PagesCount", pagesCount);
+        }
         return modelAndView;
     }
 

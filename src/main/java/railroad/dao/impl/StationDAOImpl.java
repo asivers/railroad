@@ -8,7 +8,6 @@ import railroad.dao.StationDAO;
 import railroad.model.Station;
 import railroad.model.StationTrain;
 import railroad.model.additional.StationTime;
-import railroad.model.additional.TrainTime;
 
 import java.sql.Time;
 import java.util.*;
@@ -75,7 +74,7 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     public boolean isExistForTrain(int trainNumber, String stationName, String stopTime) {
         Session session = sessionFactory.getCurrentSession();
-        int isNewStation = session.createQuery("SELECT COUNT(*) FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        int isNewStation = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
         int stationID = 0;
         int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
         if (isNewStation == 0) {
@@ -89,7 +88,7 @@ public class StationDAOImpl implements StationDAO {
             return false;
         } else {
             stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
-            int isByTrain = session.createQuery("SELECT COUNT(*) FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID", Number.class).setParameter("stationID", stationID).setParameter("trainID", trainID).getSingleResult().intValue();
+            int isByTrain = session.createQuery("SELECT st.station_id FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID", Number.class).setParameter("stationID", stationID).setParameter("trainID", trainID).list().size();
             if (isByTrain == 0) {
                 StationTrain newStationTrain = new StationTrain();
                 newStationTrain.setStationId(stationID);

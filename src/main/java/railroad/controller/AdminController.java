@@ -142,11 +142,15 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         if (admin) {
             int trainsCount = trainService.allTrainsCount();
-            int pagesCount = (trainsCount + 6)/7;
-            modelAndView.setViewName("alltrains");
-            modelAndView.addObject("AllTrainsList", trainService.allTrains(page));
-            modelAndView.addObject("Page", page);
-            modelAndView.addObject("PagesCount", pagesCount);
+            if (trainsCount == 0)
+                modelAndView.setViewName("notrainsfound");
+            else {
+                int pagesCount = (trainsCount + 6) / 7;
+                modelAndView.setViewName("alltrains");
+                modelAndView.addObject("AllTrainsList", trainService.allTrains(page));
+                modelAndView.addObject("Page", page);
+                modelAndView.addObject("PagesCount", pagesCount);
+            }
         }
         else
             modelAndView.setViewName("wrongloginpassword");
@@ -168,12 +172,16 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         if (admin) {
             int passengersCount = passengerService.passengersByTrainCount(trainNumber);
-            int pagesCount = (passengersCount + 7)/8;
-            modelAndView.setViewName("passengersbytrain");
-            modelAndView.addObject("PassengersList", passengerService.passengersByTrain(trainNumber, page));
-            modelAndView.addObject("TrainNumber", trainNumber);
-            modelAndView.addObject("Page", page);
-            modelAndView.addObject("PagesCount", pagesCount);
+            if (passengersCount == 0)
+                modelAndView.setViewName("nopassengersfound");
+            else {
+                int pagesCount = (passengersCount + 7) / 8;
+                modelAndView.setViewName("passengersbytrain");
+                modelAndView.addObject("PassengersList", passengerService.passengersByTrain(trainNumber, page));
+                modelAndView.addObject("TrainNumber", trainNumber);
+                modelAndView.addObject("Page", page);
+                modelAndView.addObject("PagesCount", pagesCount);
+            }
         }
         else
             modelAndView.setViewName("wrongloginpassword");

@@ -28,7 +28,7 @@ public class TrainDAOImpl implements TrainDAO {
     @SuppressWarnings("unchecked")
     public int allTrainsCount() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("SELECT COUNT(*) FROM Train AS t", Number.class).getSingleResult().intValue();
+        return session.createQuery("SELECT t.id FROM Train AS t", Number.class).list().size();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class TrainDAOImpl implements TrainDAO {
     @SuppressWarnings("unchecked")
     public int trainsByStationCount(String stationName) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        return session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class TrainDAOImpl implements TrainDAO {
     @SuppressWarnings("unchecked")
     public int trainsBySearchCount(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2", Number.class).setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).getSingleResult().intValue();
+        return session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2", Number.class).setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).list().size();
     }
 
     @Override
@@ -94,7 +94,7 @@ public class TrainDAOImpl implements TrainDAO {
     public boolean freeSeats(int trainNumber) {
         Session session = sessionFactory.getCurrentSession();
         int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
-        int tickets = session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN Ticket AS i ON t.id = i.train_id WHERE t.id = :trainID", Number.class).setParameter("trainID", trainID).getSingleResult().intValue();
+        int tickets = session.createQuery("SELECT i.id FROM Train AS t INNER JOIN Ticket AS i ON t.id = i.train_id WHERE t.id = :trainID", Number.class).setParameter("trainID", trainID).list().size();
         int seats = session.createQuery("SELECT t.seats FROM Train AS t WHERE t.id = :trainID", Number.class).setParameter("trainID", trainID).getSingleResult().intValue();
         if (seats > tickets)
             return true;
@@ -105,7 +105,7 @@ public class TrainDAOImpl implements TrainDAO {
     @Override
     public boolean isExist(int trainNumber, int seats) {
         Session session = sessionFactory.getCurrentSession();
-        int isNewTrain = session.createQuery("SELECT COUNT(*) FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+        int isNewTrain = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).list().size();
         if (isNewTrain == 0) {
             add(trainNumber, seats);
             return false;
