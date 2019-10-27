@@ -103,11 +103,11 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
-    public boolean isExist(int trainNumber) {
+    public boolean isExist(int trainNumber, int seats) {
         Session session = sessionFactory.getCurrentSession();
         int isNewTrain = session.createQuery("SELECT COUNT(*) FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
         if (isNewTrain == 0) {
-            add(trainNumber);
+            add(trainNumber, seats);
             return false;
         }
         else
@@ -115,10 +115,11 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
-    public void add(int trainNumber) {
+    public void add(int trainNumber, int seats) {
         Session session = sessionFactory.getCurrentSession();
         Train newTrain = new Train();
         newTrain.setNumber(trainNumber);
+        newTrain.setSeats(seats);
         session.save(newTrain);
     }
 

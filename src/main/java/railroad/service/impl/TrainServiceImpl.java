@@ -55,10 +55,10 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     @Transactional
-    public boolean isExist(int trainNumber) { return trainDAO.isExist(trainNumber); }
+    public boolean isExist(int trainNumber, int seats) { return trainDAO.isExist(trainNumber, seats); }
 
     @Override
     @Transactional
-    public void add(int trainNumber) { trainDAO.add(trainNumber); }
+    public void add(int trainNumber, int seats) { trainDAO.add(trainNumber, seats); }
 
 }

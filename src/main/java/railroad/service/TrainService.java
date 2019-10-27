@@ -18,7 +18,7 @@ public interface TrainService {
 
     boolean freeSeats(int trainNumber);
 
-    boolean isExist(int trainNumber);
-    void add(int trainNumber);
+    boolean isExist(int trainNumber, int seats);
+    void add(int trainNumber, int seats);
 
 }

@@ -69,10 +69,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/finishaddtrain", method = RequestMethod.POST)
-    public ModelAndView finishAddTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber) {
+    public ModelAndView finishAddTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber, @ModelAttribute("seats") int seats) {
         ModelAndView modelAndView = new ModelAndView();
         if (admin)
-            if (!(trainService.isExist(trainNumber))) {
+            if (!(trainService.isExist(trainNumber, seats))) {
                 modelAndView.setViewName("trainaddsuccess");
                 modelAndView.addObject("TrainNumber", trainNumber);
             }
