@@ -2,6 +2,7 @@ package railroad.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.TicketDAO;
 import railroad.model.Ticket;
 import railroad.service.TicketService;
@@ -16,18 +17,4 @@ public class TicketServiceImpl implements TicketService {
         this.ticketDAO = ticketDAO;
     }
 
-    @Override
-    public List<Ticket> allTickets() {
-        return ticketDAO.allTickets();
-    }
-
-    @Override
-    public void add(Ticket ticket) {
-        ticketDAO.add(ticket);
-    }
-
-    @Override
-    public Ticket getById(int id) {
-        return ticketDAO.getById(id);
-    }
 }

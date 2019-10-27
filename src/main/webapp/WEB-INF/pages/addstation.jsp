@@ -15,26 +15,24 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Choose the train</title>
+    <title>Add station</title>
 </head>
 
 <body>
 <div class="container" id="centerform" style="top:35%">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Choose the train number</h3>
+        <h3>Choose the station</h3>
     </div>
-    <c:url value="/passengersbytrain" var="var"/>
+    <c:url value="/finishAddStation" var="var"/>
     <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Train number</label>
-            <div class="col-sm-8">
-                <input type="text" name="train" value="" class="form-control">
+            <label class="col-sm-3 col-form-label">Station</label>
+            <div class="col-sm-9">
+                <input type="text" name="station" value="" class="form-control">
             </div>
         </div>
-
         <div class="row" style="margin-left:1px; margin-right:1px">
-            <input type="text" name="page" value="1" class="form-control" style="display:none">
-            <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Find</button>
+            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Add</button>
             <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>

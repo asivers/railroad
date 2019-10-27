@@ -20,16 +20,6 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     @Transactional
-    public List<Passenger> allPassengers() {
-        return passengerDAO.allPassengers();
-    }
-
-    @Override
-    @Transactional
-    public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber) { return passengerDAO.isOnTrain(firstName, secondName, birthDate, trainNumber); }
-
-    @Override
-    @Transactional
     public int passengersByTrainCount(int trainNumber) { return passengerDAO.passengersByTrainCount(trainNumber); }
 
     @Override
@@ -38,13 +28,12 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     @Transactional
-    public void add(Passenger passenger) {
-        passengerDAO.add(passenger);
-    }
+    public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber) { return passengerDAO.isOnTrain(firstName, secondName, birthDate, trainNumber); }
 
     @Override
     @Transactional
-    public Passenger getById(int id) {
-        return passengerDAO.getById(id);
+    public void add(String firstName, String secondName, String birthDate) {
+        passengerDAO.add(firstName, secondName, birthDate);
     }
+
 }

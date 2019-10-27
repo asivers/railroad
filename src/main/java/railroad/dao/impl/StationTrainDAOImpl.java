@@ -18,17 +18,4 @@ public class StationTrainDAOImpl implements StationTrainDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<StationTrain> allStationTrains() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from StationTrain").list();
-    }
-
-    @Override
-    public void add(StationTrain stationTrain) {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(stationTrain);
-    }
-
 }

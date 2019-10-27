@@ -16,14 +16,4 @@ public class StationTrainServiceImpl implements StationTrainService {
         this.stationTrainDAO = stationTrainDAO;
     }
 
-    @Override
-    public List<StationTrain> allStationTrains() {
-        return stationTrainDAO.allStationTrains();
-    }
-
-    @Override
-    public void add(StationTrain stationTrain) {
-        stationTrainDAO.add(stationTrain);
-    }
-
 }

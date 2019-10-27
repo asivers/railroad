@@ -26,13 +26,6 @@ public class StationDAOImpl implements StationDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Station> allStations() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Station").list();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
     public int stationsByTrainCount(int trainNumber) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
@@ -56,14 +49,25 @@ public class StationDAOImpl implements StationDAO {
     }
 
     @Override
-    public void add(Station station) {
+    @SuppressWarnings("unchecked")
+    public boolean isExist(String stationName) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(station);
+        int isNewStation = session.createQuery("SELECT COUNT(*) FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        if (isNewStation == 0) {
+            add(stationName);
+            return false;
+        }
+        else
+            return true;
     }
 
     @Override
-    public Station getById(int id) {
+    @SuppressWarnings("unchecked")
+    public void add(String stationName) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Station.class, id);
+        Station newStation = new Station();
+        newStation.setStationName(stationName);
+        session.save(newStation);
     }
+
 }

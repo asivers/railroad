@@ -18,10 +18,6 @@ public class StationServiceImpl implements StationService {
 
     @Override
     @Transactional
-    public List<Station> allStations() { return stationDAO.allStations(); }
-
-    @Override
-    @Transactional
     public int stationsByTrainCount(int trainNumber) { return stationDAO.stationsByTrainCount(trainNumber); }
 
     @Override
@@ -30,9 +26,10 @@ public class StationServiceImpl implements StationService {
 
     @Override
     @Transactional
-    public void add(Station station) { stationDAO.add(station); }
+    public boolean isExist(String stationName) { return stationDAO.isExist(stationName); }
 
     @Override
     @Transactional
-    public Station getById(int id) { return stationDAO.getById(id); }
+    public void add(String stationName) { stationDAO.add(stationName); }
+
 }

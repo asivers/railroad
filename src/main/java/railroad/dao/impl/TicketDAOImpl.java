@@ -18,22 +18,4 @@ public class TicketDAOImpl implements TicketDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Ticket> allTickets() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Ticket").list();
-    }
-
-    @Override
-    public void add(Ticket ticket) {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(ticket);
-    }
-
-    @Override
-    public Ticket getById(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(Ticket.class, id);
-    }
 }

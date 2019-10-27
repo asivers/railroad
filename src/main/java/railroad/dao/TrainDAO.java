@@ -1,9 +1,7 @@
 package railroad.dao;
 
-import railroad.model.Train;
 import railroad.model.additional.TrainTime;
 import railroad.model.additional.TrainTimeTime;
-
 import java.sql.Time;
 import java.util.List;
 
@@ -20,6 +18,4 @@ public interface TrainDAO {
 
     boolean freeSeats(int trainNumber);
 
-    void add(Train train);
-    Train getById(int id);
 }

@@ -5,7 +5,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import railroad.dao.TrainDAO;
-import railroad.model.Train;
 import railroad.model.additional.TrainTime;
 import railroad.model.additional.TrainTimeTime;
 
@@ -102,15 +101,4 @@ public class TrainDAOImpl implements TrainDAO {
             return false;
     }
 
-    @Override
-    public void add(Train train) {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(train);
-    }
-
-    @Override
-    public Train getById(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(Train.class, id);
-    }
 }
