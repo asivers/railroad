@@ -27,7 +27,7 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Number</label>
             <div class="col-sm-9">
-                <input type="number" name="train" value="" class="form-control">
+                <input type="number" name="train" required value="" class="form-control">
             </div>
         </div>
 
