@@ -32,4 +32,8 @@ public class StationServiceImpl implements StationService {
     @Transactional
     public void add(String stationName) { stationDAO.add(stationName); }
 
+    @Override
+    @Transactional
+    public boolean isExistForTrain(int trainNumber, String stationName, String stopTime) { return stationDAO.isExistForTrain(trainNumber, stationName, stopTime); }
+
 }

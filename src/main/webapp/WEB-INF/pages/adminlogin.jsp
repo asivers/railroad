@@ -23,8 +23,7 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Enter as Admin</h3>
     </div>
-    <c:url value="/adminmain" var="var"/>
-    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
+    <form action="/adminmain" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label" for="email">Email</label>
             <div class="col-sm-9">

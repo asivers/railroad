@@ -23,8 +23,7 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Choose the train number</h3>
     </div>
-    <c:url value="/passengersbytrain" var="var"/>
-    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
+    <form action="/passengersbytrain" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Number</label>
             <div class="col-sm-9">

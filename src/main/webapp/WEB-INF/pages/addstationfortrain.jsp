@@ -15,47 +15,32 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Find the train</title>
+    <title>Add station for train</title>
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:30%">
+<div class="container" id="centerform" style="top:35%">
+    <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Train search</h3>
+        <h3>Add station for train ${TrainNumber}</h3>
     </div>
-    <form action="/trainsbysearch" method="POST" style="margin-top:10px; margin-bottom:10px">
+    <form action="/finishaddstationfortrain" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Departure</label>
+            <label class="col-sm-3 col-form-label">Station</label>
             <div class="col-sm-9">
-                <input type="text" name="departureStation" value=""  class="form-control">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
+                <input type="text" name="station" value="" class="form-control">
             </div>
         </div>
-
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Arrival</label>
+            <label class="col-sm-3 col-form-label">Stop time</label>
             <div class="col-sm-9">
-                <input type="text" name="arrivalStation" value=""  class="form-control">
+                <input type="time" name="stopTime" value="00:00" class="form-control">
             </div>
         </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Arrive after</label>
-            <div class="col-sm-9">
-                <input type="time" name="lowerTime" value="00:00" class="form-control">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Arrive until</label>
-            <div class="col-sm-9">
-                <input type="time" name="upperTime" value="23:59" class="form-control">
-            </div>
-        </div>
-
         <div class="row" style="margin-left:1px; margin-right:1px">
-            <input type="text" name="page" value="1" class="form-control" style="display:none">
-            <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Find</button>
-            <a href="/usermain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
+            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Add</button>
+            <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>
 </div>

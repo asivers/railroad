@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import railroad.dao.StationDAO;
 import railroad.model.Station;
+import railroad.model.StationTrain;
 import railroad.model.additional.StationTime;
 import railroad.model.additional.TrainTime;
 
@@ -68,6 +69,38 @@ public class StationDAOImpl implements StationDAO {
         Station newStation = new Station();
         newStation.setStationName(stationName);
         session.save(newStation);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public boolean isExistForTrain(int trainNumber, String stationName, String stopTime) {
+        Session session = sessionFactory.getCurrentSession();
+        int isNewStation = session.createQuery("SELECT COUNT(*) FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        int stationID = 0;
+        int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+        if (isNewStation == 0) {
+            add(stationName);
+            stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+            StationTrain newStationTrain = new StationTrain();
+            newStationTrain.setStationId(stationID);
+            newStationTrain.setTrainId(trainID);
+            newStationTrain.setTime(new Time(TimeSupport.TimeToLong(stopTime)));
+            session.save(newStationTrain);
+            return false;
+        } else {
+            stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+            int isByTrain = session.createQuery("SELECT COUNT(*) FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID", Number.class).setParameter("stationID", stationID).setParameter("trainID", trainID).getSingleResult().intValue();
+            if (isByTrain == 0) {
+                StationTrain newStationTrain = new StationTrain();
+                newStationTrain.setStationId(stationID);
+                newStationTrain.setTrainId(trainID);
+                newStationTrain.setTime(new Time(TimeSupport.TimeToLong(stopTime)));
+                session.save(newStationTrain);
+                return false;
+            }
+            else
+                return true;
+        }
     }
 
 }

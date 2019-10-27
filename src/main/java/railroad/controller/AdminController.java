@@ -68,14 +68,47 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/finishAddTrain", method = RequestMethod.POST)
+    @RequestMapping(value = "/finishaddtrain", method = RequestMethod.POST)
     public ModelAndView finishAddTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber) {
         ModelAndView modelAndView = new ModelAndView();
         if (admin)
-            if (!(trainService.isExist(trainNumber)))
+            if (!(trainService.isExist(trainNumber))) {
                 modelAndView.setViewName("trainaddsuccess");
+                modelAndView.addObject("TrainNumber", trainNumber);
+            }
             else
                 modelAndView.setViewName("trainaddfail");
+        else
+            modelAndView.setViewName("wrongloginpassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addstationfortrain", method = RequestMethod.POST)
+    public ModelAndView addStationForTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber) {
+        ModelAndView modelAndView = new ModelAndView();
+        if (admin) {
+            modelAndView.setViewName("addstationfortrain");
+            modelAndView.addObject("TrainNumber", trainNumber);
+        }
+        else
+            modelAndView.setViewName("wrongloginpassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/finishaddstationfortrain", method = RequestMethod.POST)
+    public ModelAndView finishAddStationForTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber, @ModelAttribute("station") String stationName, @ModelAttribute("stopTime") String stopTime) {
+        ModelAndView modelAndView = new ModelAndView();
+        if (admin)
+            if (!(stationService.isExistForTrain(trainNumber, stationName, stopTime))) {
+                modelAndView.setViewName("stationfortrainaddsuccess");
+                modelAndView.addObject("TrainNumber", trainNumber);
+                modelAndView.addObject("LastStation", stationName);
+                modelAndView.addObject("StopTime", stopTime);
+            }
+            else {
+                modelAndView.setViewName("stationfortrainaddfail");
+                modelAndView.addObject("TrainNumber", trainNumber);
+            }
         else
             modelAndView.setViewName("wrongloginpassword");
         return modelAndView;
@@ -91,7 +124,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/finishAddStation", method = RequestMethod.POST)
+    @RequestMapping(value = "/finishaddstation", method = RequestMethod.POST)
     public ModelAndView finishAddStation(@ModelAttribute("admin") boolean admin, @ModelAttribute("station") String stationName) {
         ModelAndView modelAndView = new ModelAndView();
         if (admin)

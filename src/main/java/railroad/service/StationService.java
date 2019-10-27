@@ -13,4 +13,6 @@ public interface StationService {
     boolean isExist(String stationName);
     void add(String stationName);
 
+    boolean isExistForTrain(int trainNumber, String stationName, String stopTime);
+
 }

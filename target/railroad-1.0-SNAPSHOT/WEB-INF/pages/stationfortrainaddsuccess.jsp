@@ -3,7 +3,7 @@
   Created by IntelliJ IDEA.
   User: siver
   Date: 20.10.2019
-  Time: 17:45
+  Time: 17:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,34 +15,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Enter as Admin</title>
+    <title>Success</title>
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:30%">
-    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Enter as Admin</h3>
+<div class="container" id="centerform">
+    <c:set var = "TrainNumber" value = "${TrainNumber}"/>
+    <c:set var = "LastStation" value = "${LastStation}"/>
+    <c:set var = "StopTime" value = "${StopTime}"/>
+    <div style="text-align: center; margin-top:5px;">
+        <h3>Station for train ${TrainNumber} added!</h3>
     </div>
-    <form action="/adminmain" method="POST" style="margin-top:10px; margin-bottom:10px">
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="email">Email</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" name="login" id="email">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="password">Password</label>
-            <div class="col-sm-9">
-                <input type="password" class="form-control" name="password" id="password">
-            </div>
-        </div>
-
-        <div class="row" style="margin-left:1px; margin-right:1px">
-            <button type="submit" class="btn btn-primary col-sm-3 offset-sm-4" style="margin-bottom:10px;">Login</button>
-            <a href="/" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
-        </div>
-    </form>
+    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+        <h6>Last added station: ${LastStation}, ${StopTime}</h6>
+    </div>
+    <div class="row">
+        <form action="/addstationfortrain" method="POST" class="col-sm-7" style="margin-bottom:10px">
+            <button type="submit" name="train" value="${TrainNumber}" class="btn btn-success col-sm-12">More stations for this train</button>
+        </form>
+        <form action="/addtrain" method="GET" class="col-sm-5" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-success col-sm-12">Add one more train</button>
+        </form>
+    </div>
+    <div class="row">
+        <form action="/adminmain" method="GET" class="col-sm-12" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-primary col-sm-12">Main page</button>
+        </form>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->

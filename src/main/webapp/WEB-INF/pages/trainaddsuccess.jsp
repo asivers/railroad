@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -19,12 +20,13 @@
 
 <body>
 <div class="container" id="centerform">
+    <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Train added!</h3>
+        <h3>Train ${TrainNumber} added!</h3>
     </div>
     <div class="row">
-        <form action="/addstationfortrain" method="GET" class="col-sm-7" style="margin-bottom:10px">
-            <button type="submit" class="btn btn-success col-sm-12">Add station for this train</button>
+        <form action="/addstationfortrain" method="POST" class="col-sm-7" style="margin-bottom:10px">
+            <button type="submit" name="train" value="${TrainNumber}" class="btn btn-success col-sm-12">Add stations for this train</button>
         </form>
         <form action="/addtrain" method="GET" class="col-sm-5" style="margin-bottom:10px">
             <button type="submit" class="btn btn-success col-sm-12">Add one more train</button>
