@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import railroad.dao.PassengerDAO;
 import railroad.model.Passenger;
 import railroad.model.Ticket;
+import railroad.model.additional.PassengerInfo;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -64,6 +65,32 @@ public class PassengerDAOImpl implements PassengerDAO {
             else
                 return true;
         }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public int passengersByTrainCount(int trainNumber) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("SELECT COUNT(*) FROM Passenger AS p INNER JOIN Ticket AS i ON p.id = i.passenger_id INNER JOIN Train AS t ON i.train_id = t.id WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<PassengerInfo> passengersByTrain(int trainNumber, int page) {
+        Session session = sessionFactory.getCurrentSession();
+        int onPage = 8;
+        List<Integer> passengerIDs = session.createQuery("SELECT p.id FROM Passenger AS p INNER JOIN Ticket AS i ON p.id = i.passenger_id INNER JOIN Train AS t ON i.train_id = t.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        List<PassengerInfo> passengerInfos = new ArrayList<>();
+        String passengerFirstName = "";
+        String passengerSecondName = "";
+        String passengerBirthDate = "";
+        for (Integer id : passengerIDs) {
+            passengerFirstName = session.createQuery("SELECT p.first_name FROM Passenger AS p WHERE p.id = :id", String.class).setParameter("id", id).getSingleResult();
+            passengerSecondName = session.createQuery("SELECT p.second_name FROM Passenger AS p WHERE p.id = :id", String.class).setParameter("id", id).getSingleResult();
+            passengerBirthDate = session.createQuery("SELECT p.birth_date FROM Passenger AS p WHERE p.id = :id").setParameter("id", id).getSingleResult().toString().substring(0, 10);
+            passengerInfos.add(new PassengerInfo(passengerFirstName, passengerSecondName, passengerBirthDate));
+        }
+        return passengerInfos;
     }
 
     @Override

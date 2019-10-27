@@ -32,7 +32,7 @@
                 <span style="font-weight:500">Train ${TrainNumber}</span>
             </div>
             <div class="col-4 offset-1 offset-right-1 my-auto">
-                <form action="/dddddd" method="POST">
+                <form action="/passengersbytrain" method="POST">
                     <button type="submit" name="train" value="${TrainNumber}" class="btn btn-primary" style="margin-top: 5px; margin-bottom:-10px">Passengers</button>
                     <input type="text" name="page" value="1" class="form-control" style="display:none">
                 </form>

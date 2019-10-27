@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import railroad.service.PassengerService;
 import railroad.service.TrainService;
 
 @Controller
@@ -14,6 +15,12 @@ public class AdminController {
     @Autowired
     public void setTrainService(TrainService trainService) {
         this.trainService = trainService;
+    }
+
+    private PassengerService passengerService;
+    @Autowired
+    public void setPassengerService(PassengerService passengerService) {
+        this.passengerService = passengerService;
     }
 
     @RequestMapping(value = "/adminmain", method = RequestMethod.POST)
@@ -50,7 +57,7 @@ public class AdminController {
         if (admin)
             modelAndView.setViewName("addtrain");
         else
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("wrongloginpassword");
         return modelAndView;
     }
 
@@ -59,10 +66,41 @@ public class AdminController {
         int trainsCount = trainService.allTrainsCount();
         int pagesCount = (trainsCount + 6)/7;
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("alltrains");
-        modelAndView.addObject("AllTrainsList", trainService.allTrains(page));
-        modelAndView.addObject("Page", page);
-        modelAndView.addObject("PagesCount", pagesCount);
+        if (admin) {
+            modelAndView.setViewName("alltrains");
+            modelAndView.addObject("AllTrainsList", trainService.allTrains(page));
+            modelAndView.addObject("Page", page);
+            modelAndView.addObject("PagesCount", pagesCount);
+        }
+        else
+            modelAndView.setViewName("wrongloginpassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/choosetrain", method = RequestMethod.GET)
+    public ModelAndView chooseTrain(@ModelAttribute("admin") boolean admin) {
+        ModelAndView modelAndView = new ModelAndView();
+        if (admin)
+            modelAndView.setViewName("choosetrain");
+        else
+            modelAndView.setViewName("wrongloginpassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/passengersbytrain", method = RequestMethod.POST)
+    public ModelAndView allTrains(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber, @ModelAttribute("page") int page) {
+        int passengersCount = passengerService.passengersByTrainCount(trainNumber);
+        int pagesCount = (passengersCount + 7)/8;
+        ModelAndView modelAndView = new ModelAndView();
+        if (admin) {
+            modelAndView.setViewName("passengersbytrain");
+            modelAndView.addObject("PassengersList", passengerService.passengersByTrain(trainNumber, page));
+            modelAndView.addObject("TrainNumber", trainNumber);
+            modelAndView.addObject("Page", page);
+            modelAndView.addObject("PagesCount", pagesCount);
+        }
+        else
+            modelAndView.setViewName("wrongloginpassword");
         return modelAndView;
     }
 

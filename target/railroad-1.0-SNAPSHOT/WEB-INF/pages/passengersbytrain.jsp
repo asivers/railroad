@@ -15,27 +15,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>All trains</title>
+    <title>Passengers by train</title>
 </head>
 
 <body>
 <div class="container" id="centerform" style="top:15%">
+    <c:set var = "TrainNumber" value = "${TrainNumber}"/>
     <div class="row" style="margin-top:7px; margin-bottom:5px; text-align:center">
         <div class="col-12" style="text-align:center;">
-            <h3>All trains:</h3>
+            <h3>Train ${TrainNumber} passengers:</h3>
         </div>
     </div>
-
-    <c:forEach var="TrainNumber" items="${AllTrainsList}" varStatus="i">
+    <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
+        <div class="col-4 my-auto">
+            <span style="font-weight:700; margin-right:5px">First name</span>
+        </div>
+        <div class="col-4 my-auto">
+            <span style="font-weight:700; margin-right:5px">Second name</span>
+        </div>
+        <div class="col-4 my-auto">
+            <span style="font-weight:700">Birth date</span>
+        </div>
+    </div>
+    <c:forEach var="PassengerInfo" items="${PassengersList}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-            <div class="col-4 offset-2 my-auto">
-                <span style="font-weight:500">Train ${TrainNumber}</span>
+            <div class="col-4 my-auto">
+                <span style="font-weight:500; margin-right:5px">${PassengerInfo.firstName}</span>
             </div>
-            <div class="col-4 offset-1 offset-right-1 my-auto">
-                <form action="/passengersbytrain" method="POST">
-                    <button type="submit" name="train" value="${TrainNumber}" class="btn btn-primary" style="margin-top: 5px; margin-bottom:-10px">Passengers</button>
-                    <input type="text" name="page" value="1" class="form-control" style="display:none">
-                </form>
+            <div class="col-4 my-auto">
+                <span style="font-weight:500; margin-right:5px">${PassengerInfo.secondName}</span>
+            </div>
+            <div class="col-4 my-auto">
+                <span style="font-weight:500">${PassengerInfo.birthDate}</span>
             </div>
         </div>
     </c:forEach>
@@ -43,17 +54,20 @@
     <c:set var = "PagesCount" value = "${PagesCount}"/>
     <div class="row" style="margin-left:1px; margin-right:1px;">
         <div class="col-1 offset-2 my-auto text-center">
-            <form action="/alltrains" method="POST">
+            <form action="/passengersbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
                 <button type="submit" name="page" value="${Page - 1}" class="btn btn-link" style="font-weight:900; ${Page == 1 ? "display:none" : ""}"><<</button>
             </form>
         </div>
         <div class="col-3 offset-1 offset-right-1 my-auto text-center">
-            <form action="/alltrains" method="POST">
+            <form action="/passengersbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
                 <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none">Page ${Page} of ${PagesCount}</button>
             </form>
         </div>
         <div class="col-1 my-auto text-center">
-            <form action="/alltrains" method="POST">
+            <form action="/passengersbytrain" method="POST">
+                <input type="text" name="train" value="${TrainNumber}" class="form-control" style="display:none">
                 <button type="submit" name="page" value="${Page + 1}" class="btn btn-link" style="font-weight:900; ${Page == PagesCount ? "display:none" : ""}">>></button>
             </form>
         </div>

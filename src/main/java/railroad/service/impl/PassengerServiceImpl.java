@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import railroad.dao.PassengerDAO;
 import railroad.model.Passenger;
+import railroad.model.additional.PassengerInfo;
 import railroad.service.PassengerService;
 import java.util.List;
 
@@ -26,6 +27,14 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     @Transactional
     public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber) { return passengerDAO.isOnTrain(firstName, secondName, birthDate, trainNumber); }
+
+    @Override
+    @Transactional
+    public int passengersByTrainCount(int trainNumber) { return passengerDAO.passengersByTrainCount(trainNumber); }
+
+    @Override
+    @Transactional
+    public List<PassengerInfo> passengersByTrain(int trainNumber, int page) { return passengerDAO.passengersByTrain(trainNumber, page); }
 
     @Override
     @Transactional
