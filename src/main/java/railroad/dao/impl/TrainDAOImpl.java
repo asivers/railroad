@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import railroad.dao.TrainDAO;
+import railroad.model.Train;
 import railroad.model.additional.TrainTime;
 import railroad.model.additional.TrainTimeTime;
 
@@ -99,6 +100,26 @@ public class TrainDAOImpl implements TrainDAO {
             return true;
         else
             return false;
+    }
+
+    @Override
+    public boolean isExist(int trainNumber) {
+        Session session = sessionFactory.getCurrentSession();
+        int isNewTrain = session.createQuery("SELECT COUNT(*) FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+        if (isNewTrain == 0) {
+            add(trainNumber);
+            return false;
+        }
+        else
+            return true;
+    }
+
+    @Override
+    public void add(int trainNumber) {
+        Session session = sessionFactory.getCurrentSession();
+        Train newTrain = new Train();
+        newTrain.setNumber(trainNumber);
+        session.save(newTrain);
     }
 
 }

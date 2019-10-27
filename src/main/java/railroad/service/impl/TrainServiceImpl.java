@@ -53,4 +53,12 @@ public class TrainServiceImpl implements TrainService {
     @Transactional
     public boolean freeSeats(int trainNumber) { return trainDAO.freeSeats(trainNumber); }
 
+    @Override
+    @Transactional
+    public boolean isExist(int trainNumber) { return trainDAO.isExist(trainNumber); }
+
+    @Override
+    @Transactional
+    public void add(int trainNumber) { trainDAO.add(trainNumber); }
+
 }

@@ -21,7 +21,7 @@
 <body>
 <div class="container" id="centerform" style="top:35%">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Choose the station</h3>
+        <h3>Enter station name</h3>
     </div>
     <c:url value="/finishAddStation" var="var"/>
     <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">

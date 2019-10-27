@@ -26,8 +26,8 @@
     <c:url value="/passengersbytrain" var="var"/>
     <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Train number</label>
-            <div class="col-sm-8">
+            <label class="col-sm-3 col-form-label">Number</label>
+            <div class="col-sm-9">
                 <input type="text" name="train" value="" class="form-control">
             </div>
         </div>

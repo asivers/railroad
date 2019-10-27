@@ -32,8 +32,6 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     @Transactional
-    public void add(String firstName, String secondName, String birthDate) {
-        passengerDAO.add(firstName, secondName, birthDate);
-    }
+    public void add(String firstName, String secondName, String birthDate) { passengerDAO.add(firstName, secondName, birthDate); }
 
 }

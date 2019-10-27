@@ -68,6 +68,19 @@ public class AdminController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/finishAddTrain", method = RequestMethod.POST)
+    public ModelAndView finishAddTrain(@ModelAttribute("admin") boolean admin, @ModelAttribute("train") int trainNumber) {
+        ModelAndView modelAndView = new ModelAndView();
+        if (admin)
+            if (!(trainService.isExist(trainNumber)))
+                modelAndView.setViewName("trainaddsuccess");
+            else
+                modelAndView.setViewName("trainaddfail");
+        else
+            modelAndView.setViewName("wrongloginpassword");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/addstation", method = RequestMethod.GET)
     public ModelAndView addStation(@ModelAttribute("admin") boolean admin) {
         ModelAndView modelAndView = new ModelAndView();

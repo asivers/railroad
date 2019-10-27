@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
   Date: 20.10.2019
-  Time: 17:47
+  Time: 17:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,27 +14,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Add train</title>
+    <title>Fail page</title>
 </head>
 
 <body>
-<div class="container" id="centerform" style="top:35%">
-    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Enter train number</h3>
+<div class="container" id="centerform">
+    <div style="text-align: center; margin-top:5px;">
+        <h3>Train has not been added</h3>
     </div>
-    <c:url value="/finishAddTrain" var="var"/>
-    <form action="${var}" method="POST" style="margin-top:10px; margin-bottom:10px">
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Number</label>
-            <div class="col-sm-9">
-                <input type="text" name="train" value="" class="form-control">
-            </div>
-        </div>
-        <div class="row" style="margin-left:1px; margin-right:1px">
-            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Add</button>
-            <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
-        </div>
-    </form>
+    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+        <span>This train is already in the database</span>
+    </div>
+    <a href="/addtrain" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
 </div>
 
 <!-- Optional JavaScript -->
