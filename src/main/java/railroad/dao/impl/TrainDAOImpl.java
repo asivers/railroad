@@ -82,6 +82,18 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
+    public boolean freeSeats(int trainNumber) {
+        Session session = sessionFactory.getCurrentSession();
+        int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+        int tickets = session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN Ticket AS i ON t.id = i.train_id WHERE t.id = :trainID", Number.class).setParameter("trainID", trainID).getSingleResult().intValue();
+        int seats = session.createQuery("SELECT t.seats FROM Train AS t WHERE t.id = :trainID", Number.class).setParameter("trainID", trainID).getSingleResult().intValue();
+        if (seats > tickets)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
     public void add(Train train) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(train);

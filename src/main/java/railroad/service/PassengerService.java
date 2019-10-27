@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface PassengerService {
     List<Passenger> allPassengers();
+    boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber);
     void add(Passenger passenger);
     Passenger getById(int id);
 }

@@ -79,7 +79,10 @@
                 </form>
             </div>
             <div class="col-2 my-auto">
-                <button type="submit" class="btn btn-success" style="margin-top:5px; margin-bottom:5px">Buy</button>
+                <form action="/buyticket" method="POST">
+                    <input type="text" name="train" value="${TrainSearch.number}" class="form-control" style="display:none">
+                    <button type="submit" name="departureTime" value="${TrainSearch.time1}" class="btn btn-success" style="margin-left:5px; margin-top:5px; margin-bottom:-10px">Buy</button>
+                </form>
             </div>
         </div>
     </c:forEach>
@@ -116,7 +119,7 @@
             </form>
         </div>
         <div class="col-1 offset-2">
-            <a href="/findtrain" class="btn btn-secondary" role="button">Back</a>
+            <a href="/findtrain" class="btn btn-secondary" role="button" style="margin-left:5px">Back</a>
         </div>
     </div>
 </div>

@@ -19,10 +19,13 @@
 
 <body>
 <div class="container" id="centerform">
-    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Something is wrong!</h3>
+    <div style="text-align: center; margin-top:5px;">
+        <h3>Ticket has not been purchased</h3>
     </div>
-    <button type="submit" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" style="margin-bottom:10px;">Back</button>
+    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+        <span>Passenger with the same data is already registered</span>
+    </div>
+    <a href="/findtrain" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
 </div>
 
 <!-- Optional JavaScript -->

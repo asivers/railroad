@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
@@ -18,35 +19,39 @@
 </head>
 
 <body>
+<c:set var = "TrainNumber" value = "${TrainNumber}"/>
+<c:set var = "DepartureTime" value = "${DepartureTime}"/>
 <div class="container" id="centerform" style="top:30%">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Train 712502</h3>
+        <h3>Train ${TrainNumber}</h3>
     </div>
-    <form style="margin-top:10px; margin-bottom:10px">
+    <form action="finishbuyticket" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control">
+                <input type="text" name="firstName" value="" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Surname</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control">
+                <input type="text" name="secondName" value="" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="date">Birth date</label>
+            <label class="col-sm-3 col-form-label">Birth date</label>
             <div class="col-sm-9">
-                <input type="date" class="form-control">
+                <input type="date" name="birthDate" value="1990-01-01" class="form-control">
             </div>
         </div>
 
         <div class="row" style="margin-left:1px; margin-right:1px">
+            <input type="text" name="trainNumber" value="${TrainNumber}" class="form-control" style="display:none">
+            <input type="text" name="departureTime" value="${DepartureTime}" class="form-control" style="display:none">
             <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Buy</button>
-            <button type="submit" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Back</button>
+            <a href="/findtrain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>
 </div>

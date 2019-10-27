@@ -22,7 +22,7 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Ticket purchased!</h3>
     </div>
-    <button type="submit" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" style="margin-bottom:10px;">Back</button>
+    <a href="/usermain" class="btn btn-primary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Main page</a>
 </div>
 
 <!-- Optional JavaScript -->

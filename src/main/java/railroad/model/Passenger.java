@@ -20,7 +20,7 @@ public class Passenger implements Serializable {
     private String second_name;
 
     @Column
-    private Date birth_date;
+    private java.sql.Timestamp birth_date;
 
     public int getId() {
         return id;
@@ -46,11 +46,11 @@ public class Passenger implements Serializable {
         this.second_name = secondName;
     }
 
-    public Date getBirthDate() {
+    public java.sql.Timestamp getBirthDate() {
         return birth_date;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(java.sql.Timestamp birthDate) {
         this.birth_date = birthDate;
     }
 

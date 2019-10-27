@@ -28,28 +28,28 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Departure</label>
             <div class="col-sm-9">
-                <input type="text" name="departureStation" id="departureStation" class="form-control">
+                <input type="text" name="departureStation" value=""  class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrival</label>
             <div class="col-sm-9">
-                <input type="text" name="arrivalStation" id="arrivalStation" class="form-control">
+                <input type="text" name="arrivalStation" value=""  class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrive after</label>
             <div class="col-sm-9">
-                <input type="time" name="lowerTime" class="form-control">
+                <input type="time" name="lowerTime" value="00:00" class="form-control">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Arrive until</label>
             <div class="col-sm-9">
-                <input type="time" name="upperTime" class="form-control">
+                <input type="time" name="upperTime" value="23:59" class="form-control">
             </div>
         </div>
 

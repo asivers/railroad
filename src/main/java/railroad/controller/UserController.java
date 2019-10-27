@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import railroad.dao.impl.TimeSupport;
+import railroad.service.PassengerService;
 import railroad.service.StationService;
 import railroad.service.TrainService;
 import java.sql.Time;
+import java.util.Date;
 
 @Controller
-@SessionAttributes("admin")
-public class MainController {
+public class UserController {
 
     private TrainService trainService;
     @Autowired
@@ -24,6 +26,11 @@ public class MainController {
         this.stationService = stationService;
     }
 
+    private PassengerService passengerService;
+    @Autowired
+    public void setPassengerService(PassengerService passengerService) {
+        this.passengerService = passengerService;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage() {
@@ -45,37 +52,6 @@ public class MainController {
         modelAndView.setViewName("adminlogin");
         return modelAndView;
     }
-
-    @RequestMapping(value = "/adminmain", method = RequestMethod.POST)
-    public ModelAndView adminMainPost(@ModelAttribute("login") String login, @ModelAttribute("password") String password) {
-        ModelAndView modelAndView = new ModelAndView();
-        if ((login.equals("newapp@mail.ru")) && (password.equals("12345")))
-            modelAndView.addObject("admin", true);
-        else
-            modelAndView.addObject("admin", false);
-        modelAndView.setViewName("redirect:/adminmain");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/adminmain", method = RequestMethod.GET)
-    public ModelAndView adminMain(@ModelAttribute("admin") boolean admin) {
-        ModelAndView modelAndView = new ModelAndView();
-        if (admin)
-            modelAndView.setViewName("adminmain");
-        else
-            modelAndView.setViewName("index");
-        return modelAndView;
-    }
-    @RequestMapping(value = "/addtrain", method = RequestMethod.GET)
-    public ModelAndView addTrain(@ModelAttribute("admin") boolean admin) {
-        ModelAndView modelAndView = new ModelAndView();
-        if (admin)
-            modelAndView.setViewName("addtrain");
-        else
-            modelAndView.setViewName("index");
-        return modelAndView;
-    }
-
 
     @RequestMapping(value = "/findtrain", method = RequestMethod.GET)
     public ModelAndView findTrain() {
@@ -132,6 +108,31 @@ public class MainController {
         modelAndView.addObject("TrainNumber", trainNumber);
         modelAndView.addObject("Page", page);
         modelAndView.addObject("PagesCount", pagesCount);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/buyticket", method = RequestMethod.POST)
+    public ModelAndView buyTicket(@ModelAttribute("train") int trainNumber, @ModelAttribute("departureTime") String departureTime) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("buyticket");
+        modelAndView.addObject("TrainNumber", trainNumber);
+        modelAndView.addObject("DepartureTime", departureTime);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/finishbuyticket", method = RequestMethod.POST)
+    public ModelAndView finishBuyTicket(@ModelAttribute("firstName") String firstName, @ModelAttribute("secondName") String secondName, @ModelAttribute("birthDate") String birthDate, @ModelAttribute("trainNumber") int trainNumber, @ModelAttribute("departureTime") String departureTime) {
+        ModelAndView modelAndView = new ModelAndView();
+        String currentTime = (new Date()).toString().substring(11, 16);
+        if (TimeSupport.TimeToLong(departureTime) - TimeSupport.TimeToLong(currentTime) < 600000)
+            modelAndView.setViewName("ticketfaillate");
+        else if (!(trainService.freeSeats(trainNumber)))
+            modelAndView.setViewName("ticketfailnoseats");
+        else
+        if (passengerService.isOnTrain(firstName, secondName, birthDate, trainNumber))
+            modelAndView.setViewName("ticketfailsame");
+        else
+            modelAndView.setViewName("ticketsuccess");
         return modelAndView;
     }
 
