@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: siver
   Date: 20.10.2019
-  Time: 12:51
+  Time: 17:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,18 +14,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Add train</title>
+    <title>Fail page</title>
 </head>
 
 <body>
 <div class="container" id="centerform">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Welcome!</h3>
+        <h3>Wrong login or password</h3>
     </div>
-    <div class="row" style="margin-left:1px; margin-right:1px">
-        <a href="/usermain" class="btn btn-primary col-sm-4 offset-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
-        <a href="/adminlogin" class="btn btn-primary col-sm-5 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
-    </div>
+    <a href="/adminlogin" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
 </div>
 
 <!-- Optional JavaScript -->

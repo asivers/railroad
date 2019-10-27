@@ -26,9 +26,18 @@ public class TrainDAOImpl implements TrainDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Train> allTrains() {
+    public int allTrainsCount() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Train").list();
+        return session.createQuery("SELECT COUNT(*) FROM Train AS t", Number.class).getSingleResult().intValue();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Integer> allTrains(int page) {
+        Session session = sessionFactory.getCurrentSession();
+        int onPage = 7;
+        List<Integer> allTrains = session.createQuery("SELECT t.number FROM Train AS t").setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        return allTrains;
     }
 
     @Override

@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/trainsbystation", method = RequestMethod.POST)
-    public ModelAndView trainsByStation(@ModelAttribute("station") String stationName, @RequestParam(defaultValue = "1") int page) {
+    public ModelAndView trainsByStation(@ModelAttribute("station") String stationName, @ModelAttribute("page") int page) {
         int trainsCount = trainService.trainsByStationCount(stationName);
         int pagesCount = (trainsCount + 6)/7;
         ModelAndView modelAndView = new ModelAndView();

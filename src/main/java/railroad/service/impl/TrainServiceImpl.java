@@ -23,8 +23,14 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     @Transactional
-    public List<Train> allTrains() {
-        return trainDAO.allTrains();
+    public int allTrainsCount() {
+        return trainDAO.allTrainsCount();
+    }
+
+    @Override
+    @Transactional
+    public List<Integer> allTrains(int page) {
+        return trainDAO.allTrains(page);
     }
 
     @Override

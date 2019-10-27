@@ -18,17 +18,31 @@
 </head>
 
 <body>
-<div class="container" id="centerform">
+<div class="container" id="centerform" style="top:30%">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Choose option</h3>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <a href="addtrain" class="btn btn-primary col-sm-5 offset-sm-1" role="button" style="margin-bottom:10px;">Add train</a>
-        <button type="submit" class="btn btn-primary col-sm-4 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Add station</button>
+        <form action="/choosetrain" method="GET" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-primary col-sm-12">Passengers by train</button>
+        </form>
+        <form action="/alltrains" method="POST" class="col-sm-6" style="margin-bottom:10px">
+            <input type="text" name="page" value="1" class="form-control" style="display:none">
+            <button type="submit" class="btn btn-primary col-sm-12">All trains</button>
+        </form>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <button type="submit" class="btn btn-success col-sm-5 offset-sm-1" style="margin-bottom:10px;">Choose train</button>
-        <button type="submit" class="btn btn-secondary col-sm-4 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px;">Back</button>
+        <form action="/addtrain" method="GET" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-success col-sm-12">Add train</button>
+        </form>
+        <form action="/addstation" method="GET" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-success col-sm-12">Add station</button>
+        </form>
+    </div>
+    <div class="row" style="margin-left:1px; margin-right:1px">
+        <form action="/adminlogin" method="GET" class="col-sm-12" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-secondary col-sm-12">Back</button>
+        </form>
     </div>
 </div>
 

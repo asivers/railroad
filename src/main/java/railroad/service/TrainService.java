@@ -8,12 +8,18 @@ import java.sql.Time;
 import java.util.List;
 
 public interface TrainService {
-    List<Train> allTrains();
+
+    int allTrainsCount();
+    List<Integer> allTrains(int page);
+
     int trainsByStationCount(String stationName);
     List<TrainTime> trainsByStation(String stationName, int page);
+
     int trainsBySearchCount(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime);
     List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime, int page);
+
     boolean freeSeats(int trainNumber);
+
     void add(Train train);
     Train getById(int id);
 }
