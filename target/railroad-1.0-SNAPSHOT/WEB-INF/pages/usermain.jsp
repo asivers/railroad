@@ -18,14 +18,25 @@
 </head>
 
 <body>
-<div class="container" id="centerform">
+<div class="container" id="centerform" style="top:30%">
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Choose option</h3>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <a href="/findtrain" class="btn btn-primary col-sm-3 offset-sm-1" role="button" style="margin-bottom:10px;">Find train</a>
-        <a href="/choosestation" class="btn btn-primary col-sm-3 offset-sm-1" role="button" style="margin-bottom:10px;">Schedule</a>
-        <a href="/" class="btn btn-secondary col-sm-2 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
+        <form action="/findtrain" method="GET" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-primary col-sm-12">Find train</button>
+        </form>
+        <form action="/choosestation" method="GET" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-primary col-sm-12">Schedule</button>
+        </form>
+    </div>
+    <div class="row" style="margin-left:1px; margin-right:1px">
+        <form action="/mytickets" method="POST" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" name="page" value="1" class="btn btn-success col-sm-12">My tickets</button>
+        </form>
+        <form action="/dologout" method="POST" class="col-sm-6" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-secondary col-sm-12">Exit</button>
+        </form>
     </div>
 </div>
 

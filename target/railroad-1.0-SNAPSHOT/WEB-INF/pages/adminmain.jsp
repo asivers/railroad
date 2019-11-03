@@ -40,8 +40,8 @@
         </form>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <form action="/adminlogin" method="GET" class="col-sm-12" style="margin-bottom:10px">
-            <button type="submit" class="btn btn-secondary col-sm-12">Back</button>
+        <form action="/dologout" method="POST" class="col-sm-12" style="margin-bottom:10px">
+            <button type="submit" class="btn btn-secondary col-sm-12">Exit</button>
         </form>
     </div>
 </div>

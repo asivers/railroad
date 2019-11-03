@@ -28,7 +28,7 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     @Transactional
-    public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber) { return passengerDAO.isOnTrain(firstName, secondName, birthDate, trainNumber); }
+    public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber, int currentUserID) { return passengerDAO.isOnTrain(firstName, secondName, birthDate, trainNumber, currentUserID); }
 
     @Override
     @Transactional

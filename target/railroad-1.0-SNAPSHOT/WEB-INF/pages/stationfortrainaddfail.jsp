@@ -25,7 +25,7 @@
         <h3>Station has not been added</h3>
     </div>
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <span>This station is already on the route of this train</span>
+        <span>Station or stop time already exists for this train</span>
     </div>
     <div class="row">
         <form action="/addstationfortrain" method="POST" class="col-sm-7" style="margin-bottom:10px">

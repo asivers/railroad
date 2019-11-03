@@ -22,7 +22,14 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Ticket purchased!</h3>
     </div>
-    <a href="/usermain" class="btn btn-primary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Main page</a>
+    <div class="row" style="margin-left:1px; margin-right:1px">
+        <form action="/mytickets" method="POST" class="col-sm-5 offset-sm-1" style="margin-bottom:10px">
+            <button type="submit" name="page" value="1" class="btn btn-primary col-sm-12">My tickets</button>
+        </form>
+        <form action="/usermain" method="GET" class="col-sm-4 offset-sm-1 offset-right-sm-1" style="margin-bottom:10px">
+            <button type="submit" name="page" value="1" class="btn btn-primary col-sm-12">Main page</button>
+        </form>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->

@@ -28,7 +28,7 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     public int stationsByTrainCount(int trainNumber) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("SELECT COUNT(*) FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+        return session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).list().size();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class StationDAOImpl implements StationDAO {
     public List<StationTime> stationsByTrain(int trainNumber, int page) {
         Session session = sessionFactory.getCurrentSession();
         int onPage = 8;
-        List<Integer> stationIDs = session.createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        List<Integer> stationIDs = session.createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber ORDER BY st.time").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<StationTime> stationsTimes = new ArrayList<>();
         String stopTime = "";
         for (Integer id : stationIDs) {
@@ -52,7 +52,7 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     public boolean isExist(String stationName) {
         Session session = sessionFactory.getCurrentSession();
-        int isNewStation = session.createQuery("SELECT COUNT(*) FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        int isNewStation = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
         if (isNewStation == 0) {
             add(stationName);
             return false;
@@ -74,31 +74,44 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     public boolean isExistForTrain(int trainNumber, String stationName, String stopTime) {
         Session session = sessionFactory.getCurrentSession();
-        int isNewStation = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
-        int stationID = 0;
-        int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
-        if (isNewStation == 0) {
-            add(stationName);
-            stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
-            StationTrain newStationTrain = new StationTrain();
-            newStationTrain.setStationId(stationID);
-            newStationTrain.setTrainId(trainID);
-            newStationTrain.setTime(new Time(TimeSupport.TimeToLong(stopTime)));
-            session.save(newStationTrain);
-            return false;
-        } else {
-            stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
-            int isByTrain = session.createQuery("SELECT st.station_id FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID", Number.class).setParameter("stationID", stationID).setParameter("trainID", trainID).list().size();
-            if (isByTrain == 0) {
+        String tzStopTime = TimeSupport.LongToTime(TimeSupport.TimeToLong(stopTime) + 10800000);
+        List<Object> timesList = session.createQuery("SELECT st.time FROM StationTrain AS st INNER JOIN Train AS t ON st.train_id = t.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).list();
+        boolean newTime = true;
+        for (Object x : timesList) {
+            if (x.toString().substring(0, 5).equals(tzStopTime)) {
+                newTime = false;
+                break;
+            }
+        }
+        if (!newTime)
+            return true;
+        else {
+            int isNewStation = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
+            int stationID = 0;
+            int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
+            if (isNewStation == 0) {
+                add(stationName);
+                stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
                 StationTrain newStationTrain = new StationTrain();
                 newStationTrain.setStationId(stationID);
                 newStationTrain.setTrainId(trainID);
                 newStationTrain.setTime(new Time(TimeSupport.TimeToLong(stopTime)));
                 session.save(newStationTrain);
                 return false;
+            } else {
+                stationID = session.createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+                int isByTrain = session.createQuery("SELECT st.station_id FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID", Number.class).setParameter("stationID", stationID).setParameter("trainID", trainID).list().size();
+                if (isByTrain == 0) {
+                    StationTrain newStationTrain = new StationTrain();
+                    newStationTrain.setStationId(stationID);
+                    newStationTrain.setTrainId(trainID);
+                    newStationTrain.setTime(new Time(TimeSupport.TimeToLong(stopTime)));
+                    session.save(newStationTrain);
+                    return false;
+                }
+                else
+                    return true;
             }
-            else
-                return true;
         }
     }
 

@@ -22,7 +22,7 @@
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
         <h3>Wrong login or password</h3>
     </div>
-    <a href="/adminlogin" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
+    <a href="/signin" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
 </div>
 
 <!-- Optional JavaScript -->

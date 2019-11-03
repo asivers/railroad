@@ -52,7 +52,7 @@ public class TrainDAOImpl implements TrainDAO {
     public List<TrainTime> trainsByStation(String stationName, int page) {
         Session session = sessionFactory.getCurrentSession();
         int onPage = 7;
-        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName").setParameter("stationName", stationName).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName ORDER BY st.time").setParameter("stationName", stationName).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<TrainTime> trainsTimes = new ArrayList<>();
         String stopTime = "";
         for (Integer id : trainIDs) {
@@ -76,7 +76,7 @@ public class TrainDAOImpl implements TrainDAO {
     public List<TrainTimeTime> trainsBySearch(String departureStationName, String arrivalStationName, Time lowerTime, Time upperTime, int page) {
         Session session = sessionFactory.getCurrentSession();
         int onPage = 7;
-        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2").setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :departureStationName OR (s.station_name = :arrivalStationName AND st.time > :lowerTime AND st.time < :upperTime) GROUP BY t.id HAVING COUNT(*) = 2 ORDER BY st.time").setParameter("departureStationName", departureStationName).setParameter("arrivalStationName", arrivalStationName).setParameter("lowerTime", lowerTime).setParameter("upperTime", upperTime).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
         List<TrainTimeTime> trainsBothTimes = new ArrayList<>();
         String trueDepartureTime = "";
         String trueArrivalTime = "";

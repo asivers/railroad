@@ -24,8 +24,8 @@
         <h3>Welcome!</h3>
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
-        <a href="/usermain" class="btn btn-primary col-sm-4 offset-sm-1" role="button" style="margin-bottom:10px;">As User</a>
-        <a href="/adminlogin" class="btn btn-primary col-sm-5 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">As Administrator</a>
+        <a href="/signin" class="btn btn-primary col-sm-6" role="button" style="margin-bottom:10px;">Enter system</a>
+        <a href="/signup" class="btn btn-success col-sm-5 offset-sm-1" role="button" style="margin-bottom:10px;">New User</a>
     </div>
 </div>
 
