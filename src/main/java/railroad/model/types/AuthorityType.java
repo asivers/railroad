@@ -1,6 +1,6 @@
-package com.bitMiners.pdf.domain.types;
+package railroad.model.types;
 
-public enum  AuthorityType {
+public enum AuthorityType {
     ROLE_ADMIN,
     ROLE_USER
 }
