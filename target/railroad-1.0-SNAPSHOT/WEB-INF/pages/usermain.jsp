@@ -24,7 +24,7 @@
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
         <form action="/findtrain" method="GET" class="col-sm-6" style="margin-bottom:10px">
-            <button type="submit" class="btn btn-primary col-sm-12">Find train</button>
+            <button type="submit" class="btn btn-success col-sm-12">Find train</button>
         </form>
         <form action="/choosestation" method="GET" class="col-sm-6" style="margin-bottom:10px">
             <button type="submit" class="btn btn-primary col-sm-12">Schedule</button>
@@ -32,7 +32,7 @@
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
         <form action="/mytickets" method="POST" class="col-sm-6" style="margin-bottom:10px">
-            <button type="submit" name="page" value="1" class="btn btn-success col-sm-12">My tickets</button>
+            <button type="submit" name="page" value="1" class="btn btn-primary col-sm-12">My tickets</button>
         </form>
         <form action="/dologout" method="POST" class="col-sm-6" style="margin-bottom:10px">
             <button type="submit" class="btn btn-secondary col-sm-12">Exit</button>
