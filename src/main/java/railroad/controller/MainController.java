@@ -1,6 +1,7 @@
 package railroad.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -351,6 +352,27 @@ public class MainController {
             modelAndView.addObject("Page", page);
             modelAndView.addObject("PagesCount", pagesCount);
         }
+        return modelAndView;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("exception");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/403")
+    public ModelAndView accessDeniedException() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("403");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/404")
+    public ModelAndView resourceNotFoundException() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404");
         return modelAndView;
     }
 

@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         AccessDeniedHandlerImpl accessDeniedHandler = new AccessDeniedHandlerImpl();
-        accessDeniedHandler.setErrorPage("/accessDenied.htm");
+        accessDeniedHandler.setErrorPage("/403");
         return accessDeniedHandler;
     }
 
@@ -82,6 +82,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/dologout")
                 .logoutSuccessUrl("/logout")
                 .permitAll()
+                .and()
+
+                .exceptionHandling()
+                .accessDeniedPage("/403")
                 .and()
 
                 .csrf().disable();
