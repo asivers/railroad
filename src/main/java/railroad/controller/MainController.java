@@ -1,5 +1,9 @@
 package railroad.controller;
 
+//import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+import org.apache.log4j.Logger;
+//import org.apache.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +27,8 @@ import java.util.List;
 @Controller
 @SessionAttributes({"currentUser", "currentUserID"})
 public class MainController {
+
+    private static final Logger log = Logger.getLogger(MainController.class);
 
     private TrainService trainService;
     @Autowired
@@ -60,6 +66,7 @@ public class MainController {
     public ModelAndView indexPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        log.info("index page visited");
         return modelAndView;
     }
 

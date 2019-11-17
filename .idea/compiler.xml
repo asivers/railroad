@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="railroad" options="-endorseddirs C:\Users\siver\Desktop\prog\java_school\jsf_two_2\railroad\target/endorsed" />
+      <module name="railroad" options="-endorseddirs C:\Users\siver\Desktop\prog\repositories\railroad\target/endorsed" />
     </option>
   </component>
 </project>
