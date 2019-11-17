@@ -91,6 +91,7 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean freeSeats(int trainNumber) {
         Session session = sessionFactory.getCurrentSession();
         int trainID = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).getSingleResult().intValue();
@@ -103,6 +104,7 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean isExist(int trainNumber, int seats) {
         Session session = sessionFactory.getCurrentSession();
         int isNewTrain = session.createQuery("SELECT t.id FROM Train AS t WHERE t.number = :trainNumber", Number.class).setParameter("trainNumber", trainNumber).list().size();
@@ -115,6 +117,7 @@ public class TrainDAOImpl implements TrainDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void add(int trainNumber, int seats) {
         Session session = sessionFactory.getCurrentSession();
         Train newTrain = new Train();

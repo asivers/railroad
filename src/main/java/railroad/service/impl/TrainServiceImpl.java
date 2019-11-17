@@ -61,4 +61,8 @@ public class TrainServiceImpl implements TrainService {
     @Transactional
     public void add(int trainNumber, int seats) { trainDAO.add(trainNumber, seats); }
 
+//    @Override
+//    @Transactional
+//    public String trainsForTimeBoard(String stationName) { trainDAO.trainsForTimeBoard(stationName); };
+
 }

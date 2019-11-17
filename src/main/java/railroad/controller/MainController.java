@@ -1,23 +1,24 @@
 package railroad.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import railroad.bean.NotificationManagedBean;
 import railroad.dao.impl.TimeSupport;
 import railroad.model.User;
+import railroad.model.additional.TrainTime;
 import railroad.model.login.RailroadUserDetails;
 import railroad.service.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @SessionAttributes({"currentUser", "currentUserID"})
@@ -53,6 +54,7 @@ public class MainController {
         this.newUserService = newUserService;
     }
 
+    private NotificationManagedBean notificationManagedBean = new NotificationManagedBean();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage() {
@@ -290,6 +292,18 @@ public class MainController {
             modelAndView.addObject("TrainNumber", trainNumber);
             modelAndView.addObject("LastStation", stationName);
             modelAndView.addObject("StopTime", stopTime);
+            int trainsCount = trainService.trainsByStationCount(stationName);
+            int pagesCount = (trainsCount + 6) / 7;
+            List<TrainTime> toTimeBoard = trainService.trainsByStation(stationName, 1);
+            String toTimeBoardString = stationName + "/" + pagesCount + "/";
+            for (TrainTime trainTime : toTimeBoard) {
+                toTimeBoardString += trainTime.getNumber();
+                toTimeBoardString += "/";
+                toTimeBoardString += trainTime.getTime();
+                toTimeBoardString += "/";
+            }
+            notificationManagedBean.setMessage(toTimeBoardString);
+            notificationManagedBean.sendNotification();
         }
         else {
             modelAndView.setViewName("stationfortrainaddfail");

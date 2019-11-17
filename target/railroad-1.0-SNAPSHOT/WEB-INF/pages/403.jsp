@@ -22,7 +22,7 @@
     <div style="text-align: center; margin-top:5px;">
         <h3>Access denied!</h3>
     </div>
-    <a href="/" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Back</a>
+    <a href="/" class="btn btn-secondary col-sm-4 offset-sm-4 offset-right-sm-4" role="button" style="margin-bottom:10px;">Home page</a>
 </div>
 
 <!-- Optional JavaScript -->

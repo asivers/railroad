@@ -21,4 +21,6 @@ public interface TrainDAO {
     boolean isExist(int trainNumber, int seats);
     void add(int trainNumber, int seats);
 
+//    String trainsForTimeBoard(String stationName);
+
 }

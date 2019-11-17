@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "railroad")
+@ComponentScan(basePackages = {"railroad", "railroad.websockets"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
