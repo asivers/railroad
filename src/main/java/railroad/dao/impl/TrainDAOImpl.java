@@ -45,6 +45,7 @@ public class TrainDAOImpl implements TrainDAO {
     public int trainsByStationCount(String stationName) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
+//        return 3;
     }
 
     @Override
