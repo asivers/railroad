@@ -1,9 +1,6 @@
 package railroad.controller;
 
-//import org.apache.logging.log4j.Logger;
-//import org.apache.logging.log4j.LogManager;
 import org.apache.log4j.Logger;
-//import org.apache.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import railroad.bean.NotificationManagedBean;
 import railroad.dao.impl.TimeSupport;
+import railroad.messaging.MessageSender;
 import railroad.model.User;
 import railroad.model.additional.TrainTime;
 import railroad.model.login.RailroadUserDetails;
@@ -29,6 +26,9 @@ import java.util.List;
 public class MainController {
 
     private static final Logger log = Logger.getLogger(MainController.class);
+
+    @Autowired
+    MessageSender messageSender;
 
     private TrainService trainService;
     @Autowired
@@ -59,8 +59,6 @@ public class MainController {
     public void setNewUserService(NewUserService newUserService) {
         this.newUserService = newUserService;
     }
-
-    private NotificationManagedBean notificationManagedBean = new NotificationManagedBean();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage() {
@@ -309,8 +307,7 @@ public class MainController {
                 toTimeBoardString += trainTime.getTime();
                 toTimeBoardString += "/";
             }
-            notificationManagedBean.setMessage(toTimeBoardString);
-            notificationManagedBean.sendNotification();
+            messageSender.sendMessage(toTimeBoardString);
         }
         else {
             modelAndView.setViewName("stationfortrainaddfail");

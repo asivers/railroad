@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: railroad.dao.impl.TrainServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.864 s - in railroad.dao.impl.TrainServiceTest

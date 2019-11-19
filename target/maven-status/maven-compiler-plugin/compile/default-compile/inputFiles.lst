@@ -4,16 +4,18 @@ C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\Tic
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\SecurityWebInitializer.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\TicketService.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\Passenger.java
-C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\websockets\ThreadMsgSender.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\impl\TrainDAOImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\types\AuthorityType.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\additional\TicketInfo.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\TrainDAO.java
+C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\MessagingListenerConfiguration.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\StationService.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\impl\StationServiceImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\impl\TicketServiceImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\TrainService.java
+C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\MessagingConfiguration.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\PassengerService.java
+C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\messaging\MessageReceiver.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\NewUserService.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\Ticket.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\controller\MainController.java
@@ -23,7 +25,6 @@ C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\impl\TicketDAOImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\impl\StationDAOImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\impl\TimeSupport.java
-C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\websockets\NotificationEndPoint.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\impl\NewUserServiceImpl.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\PassengerUser.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\additional\TrainTime.java
@@ -44,6 +45,6 @@ C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\dao\Pas
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\additional\PassengerInfo.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\HibernateConfig.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\service\impl\UserDetailsServiceImpl.java
-C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\bean\NotificationManagedBean.java
+C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\messaging\MessageSender.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\config\WebConfig.java
 C:\Users\siver\Desktop\prog\repositories\railroad\src\main\java\railroad\model\additional\StationTime.java

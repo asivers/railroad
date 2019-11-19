@@ -3,6 +3,7 @@ package railroad.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -17,7 +18,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"railroad", "railroad.websockets"})
+@Import({MessagingConfiguration.class, MessagingListenerConfiguration.class})
+@ComponentScan(basePackages = "railroad")
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

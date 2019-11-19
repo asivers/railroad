@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import railroad.dao.TrainDAO;
+import railroad.messaging.MessageSender;
 import railroad.model.Train;
 import railroad.model.additional.TrainTime;
 import railroad.model.additional.TrainTimeTime;
@@ -16,6 +17,9 @@ import static railroad.dao.impl.TimeSupport.TimeToLong;
 
 @Repository
 public class TrainDAOImpl implements TrainDAO {
+
+    @Autowired
+    MessageSender messageSender;
 
     private SessionFactory sessionFactory;
 
@@ -126,5 +130,32 @@ public class TrainDAOImpl implements TrainDAO {
         newTrain.setSeats(seats);
         session.save(newTrain);
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void trainsByStationTB(String stationName, int page) {
+        Session session = sessionFactory.getCurrentSession();
+        int onPage = 7;
+        int trainsCount = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).list().size();
+        int pagesCount = (trainsCount + onPage - 1) / onPage;
+        List<Integer> trainIDs = session.createQuery("SELECT t.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.station_name = :stationName ORDER BY st.time").setParameter("stationName", stationName).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        List<TrainTime> trainsTimes = new ArrayList<>();
+        String stopTime = "";
+        for (Integer id : trainIDs) {
+            int trainNumber = session.createQuery("SELECT t.number FROM Train AS t WHERE t.id = :id", Number.class).setParameter("id", id).getSingleResult().intValue();
+            stopTime = session.createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :stationName").setParameter("id", id).setParameter("stationName", stationName).getSingleResult().toString();
+            stopTime = TimeSupport.LongToTime(TimeToLong(stopTime) - 10800000);
+            trainsTimes.add(new TrainTime(trainNumber, stopTime));
+        }
+        String toTimeBoardString = stationName + "/" + pagesCount + "/";
+        for (TrainTime trainTime : trainsTimes) {
+            toTimeBoardString += trainTime.getNumber();
+            toTimeBoardString += "/";
+            toTimeBoardString += trainTime.getTime();
+            toTimeBoardString += "/";
+        }
+        messageSender.sendMessage(toTimeBoardString);
+    }
+
 
 }
