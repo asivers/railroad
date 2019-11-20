@@ -1,28 +1,48 @@
 package railroad.service.impl;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import railroad.dao.NewUserDAO;
+import railroad.dao.AuthorityUserDAO;
+import railroad.dao.UserDAO;
+import railroad.model.AuthorityUser;
+import railroad.model.User;
 import railroad.service.NewUserService;
 
 @Service
 public class NewUserServiceImpl implements NewUserService {
-    private NewUserDAO newUserDAO;
 
+    private AuthorityUserDAO authorityUserDAO;
     @Autowired
-    public void setNewUserDAO(NewUserDAO newUserDAO) {
-        this.newUserDAO = newUserDAO;
+    public void setAuthorityUserDAO(AuthorityUserDAO authorityUserDAO) {
+        this.authorityUserDAO = authorityUserDAO;
+    }
+
+    private UserDAO userDAO;
+    @Autowired
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
     @Transactional
     public boolean isInDatabase(String username, String hashedPassword) {
-        return newUserDAO.isInDatabase(username, hashedPassword);
+        int isNewUser = userDAO.countByUsername(username);
+        if (isNewUser > 0)
+            return true;
+        else {
+            User newUser = new User();
+            newUser.setUsername(username);
+            newUser.setPassword(hashedPassword);
+            userDAO.add(newUser);
+            int userID = userDAO.getIdByUsernameSingle(username);
+            AuthorityUser newAuthorityUser = new AuthorityUser();
+            newAuthorityUser.setAuthority_id(2);
+            newAuthorityUser.setUser_id(userID);
+            authorityUserDAO.add(newAuthorityUser);
+            return false;
+        }
     }
-
-    @Override
-    @Transactional
-    public void add(String username, String hashedPassword) { newUserDAO.add(username, hashedPassword); }
 
 }

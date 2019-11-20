@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import railroad.dao.impl.TimeSupport;
+import railroad.service.impl.TimeSupport;
 import railroad.messaging.MessageSender;
 import railroad.model.User;
 import railroad.model.additional.TrainTime;

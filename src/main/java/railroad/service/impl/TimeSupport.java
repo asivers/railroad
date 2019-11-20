@@ -1,4 +1,4 @@
-package railroad.dao.impl;
+package railroad.service.impl;
 
 public class TimeSupport {
 
