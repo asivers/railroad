@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: railroad.dao.PassengerDAOTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.542 s - in railroad.dao.PassengerDAOTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.557 s - in railroad.dao.PassengerDAOTest

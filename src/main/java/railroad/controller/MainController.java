@@ -17,7 +17,6 @@ import railroad.model.login.RailroadUserDetails;
 import railroad.service.*;
 
 import javax.servlet.http.HttpSession;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -9,6 +9,29 @@
     <list default="true" id="202a6faf-06ef-401e-8069-539666470580" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/railroad/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.PassengerDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.PassengerDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.PassengerUserDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.PassengerUserDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.StationDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.StationDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.StationTrainDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.StationTrainDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.TicketDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.TicketDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.TrainDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.TrainDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.UserDAOTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.dao.UserDAOTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.PassengerServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.PassengerServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.TicketServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.TicketServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.TrainServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-railroad.service.TrainServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.PassengerDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.PassengerDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.PassengerUserDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.PassengerUserDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.StationDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.StationDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.StationTrainDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.StationTrainDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.TicketDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.TicketDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.TrainDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.TrainDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.UserDAOTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.dao.UserDAOTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.service.PassengerServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.service.PassengerServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.service.TicketServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.service.TicketServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/railroad.service.TrainServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/railroad.service.TrainServiceTest.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -452,6 +475,8 @@
       <workItem from="1574679947022" duration="139000" />
       <workItem from="1574688708413" duration="1123000" />
       <workItem from="1574706569306" duration="552000" />
+      <workItem from="1574707310193" duration="23000" />
+      <workItem from="1574707395050" duration="29000" />
     </task>
     <servers />
   </component>
