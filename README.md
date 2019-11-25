@@ -49,7 +49,7 @@ Schedule board application configuration through JavaConfig (without web.xml). M
 * JPA: Hibernate
 * Framework: Spring MVC, EJB
 * Pages: JSP (main app); XHTML (schedule board app)
-* Notification browser output: WebSocket (schedule board app)
+* Notification browser output: WebSocket, JSF (schedule board app)
 * Notification transfer method: ActiveMQ
 * Event listening: WebServices (endpoint)
 
