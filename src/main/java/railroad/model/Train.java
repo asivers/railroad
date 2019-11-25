@@ -7,6 +7,10 @@ import java.io.Serializable;
 @Table(name = "trains")
 public class Train implements Serializable {
 
+    /**
+     * Train entity class.
+     */
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)

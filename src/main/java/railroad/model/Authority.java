@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Table(name = "authority")
 public class Authority {
 
+    /**
+     * Authority entity class.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -8,6 +8,10 @@ import java.sql.Time;
 @Table(name = "stations_trains")
 public class StationTrain implements Serializable {
 
+    /**
+     * StationTrain entity class.
+     */
+
     @Id
     @Column
     private int station_id;

@@ -21,19 +21,22 @@
 <body>
 <div class="container" id="centerform">
     <c:set var = "TrainNumber" value = "${TrainNumber}"/>
+    <c:set var = "Statement1" value = "${Statement1}"/>
+    <c:set var = "Statement2" value = "${Statement2}"/>
     <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
-        <h3>Train ${TrainNumber} added!</h3>
+        <h3>${Statement1}</h3>
+    </div>
+    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+        <span>${Statement2}</span>
     </div>
     <div class="row">
-        <form action="/addstationfortrain" method="POST" class="col-sm-7" style="margin-bottom:10px">
-            <button type="submit" name="train" value="${TrainNumber}" class="btn btn-success col-sm-12">Add stations for this train</button>
+        <form action="/addstationfortrain" method="POST" class="col-sm-4" style="margin-bottom:10px">
+            <button type="submit" name="train" value="${TrainNumber}" class="btn btn-success col-sm-12">Add station</button>
         </form>
-        <form action="/addtrain" method="GET" class="col-sm-5" style="margin-bottom:10px">
-            <button type="submit" class="btn btn-success col-sm-12">Add one more train</button>
+        <form action="/deletestationfortrain" method="POST" class="col-sm-4" style="margin-bottom:10px">
+            <button type="submit" name="train" value="${TrainNumber}" class="btn btn-danger col-sm-12">Delete station</button>
         </form>
-    </div>
-    <div class="row">
-        <form action="/adminmain" method="GET" class="col-sm-12" style="margin-bottom:10px">
+        <form action="/adminmain" method="POST" class="col-sm-4" style="margin-bottom:10px">
             <button type="submit" class="btn btn-primary col-sm-12">Main page</button>
         </form>
     </div>

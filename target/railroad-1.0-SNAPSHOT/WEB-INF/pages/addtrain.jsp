@@ -15,13 +15,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="res/style.css" rel="stylesheet" type="text/css" />
-    <title>Add train</title>
+    <title>Enter train number</title>
 </head>
 
 <body>
 <div class="container" id="centerform" style="top:35%">
-    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+    <div style="text-align: center; margin-top:5px;">
         <h3>Enter train number</h3>
+    </div>
+    <div style="text-align: center; margin-top:5px; margin-bottom:20px;">
+        <span>If an existing train is being updated, skip the "seats" field.</span>
     </div>
     <form action="/finishaddtrain" method="POST" style="margin-top:10px; margin-bottom:10px">
         <div class="form-group row">
@@ -33,11 +36,11 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Seats</label>
             <div class="col-sm-9">
-                <input type="number" name="seats" required value="" class="form-control">
+                <input type="number" name="seats" required value="0" class="form-control">
             </div>
         </div>
         <div class="row" style="margin-left:1px; margin-right:1px">
-            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Add</button>
+            <button type="submit" class="btn btn-success col-sm-4 offset-sm-3" style="margin-bottom:10px;">Add/Choose</button>
             <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
         </div>
     </form>

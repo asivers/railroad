@@ -28,13 +28,18 @@
 
     <c:forEach var="TrainNumber" items="${AllTrainsList}" varStatus="i">
         <div class="row" style="margin-left:1px; margin-right:1px; margin-bottom:10px; border: 1px solid silver;">
-            <div class="col-4 offset-2 my-auto">
+            <div class="col-4 offset-1 my-auto">
                 <span style="font-weight:500">Train ${TrainNumber}</span>
             </div>
-            <div class="col-4 offset-1 offset-right-1 my-auto">
+            <div class="col-3 offset-1 offset-right-1 my-auto">
                 <form action="/passengersbytrain" method="POST">
                     <button type="submit" name="train" value="${TrainNumber}" class="btn btn-primary" style="margin-top: 5px; margin-bottom:-10px">Passengers</button>
                     <input type="text" name="page" value="1" class="form-control" style="display:none">
+                </form>
+            </div>
+            <div class="col-1 offset-1 my-auto">
+                <form action="/deletetrain" method="POST">
+                    <button type="submit" name="train" value="${TrainNumber}" class="btn btn-danger" style="margin-top: 5px; margin-bottom:-10px">X</button>
                 </form>
             </div>
         </div>

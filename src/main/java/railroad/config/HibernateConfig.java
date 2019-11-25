@@ -19,20 +19,30 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
-    private Environment environment;
 
+    /**
+     * Hibernate configuration.
+     */
+
+    private Environment environment;
     @Autowired
     public void setEnvironment(Environment environment) {
         this.environment = environment;
     }
 
+    /**
+     * Hibernate properties.
+     */
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+//        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         return properties;
     }
 
+    /**
+     * Data source configuration.
+     */
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
@@ -43,6 +53,9 @@ public class HibernateConfig {
         return dataSource;
     }
 
+    /**
+     * Session factory configuration.
+     */
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -52,6 +65,9 @@ public class HibernateConfig {
         return sessionFactory;
     }
 
+    /**
+     * Transaction manager.
+     */
     @Bean
     public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();

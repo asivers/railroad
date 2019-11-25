@@ -1,6 +1,5 @@
 package railroad.dao.impl;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +17,11 @@ public class AuthorityUserDAOImpl implements AuthorityUserDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Adds authority-user relation to database.
+     *
+     * @param newAuthorityUser new authority-user relation
+     */
     @Override
     @SuppressWarnings("unchecked")
     public void add(AuthorityUser newAuthorityUser) {

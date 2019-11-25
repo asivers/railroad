@@ -1,1 +1,11 @@
-railroad\dao\impl\TrainServiceTest.class
+railroad\dao\TrainDAOTest.class
+railroad\dao\UserDAOTest.class
+railroad\dao\StationTrainDAOTest.class
+railroad\dao\PassengerDAOTest.class
+railroad\dao\StationDAOTest.class
+railroad\service\TicketServiceTest.class
+railroad\dao\TicketDAOTest.class
+railroad\dao\PassengerUserDAOTest.class
+railroad\service\StationServiceTest.class
+railroad\service\TrainServiceTest.class
+railroad\service\PassengerServiceTest.class

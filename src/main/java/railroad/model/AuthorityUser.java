@@ -7,6 +7,10 @@ import java.io.Serializable;
 @Table(name = "authority_users")
 public class AuthorityUser implements Serializable {
 
+    /**
+     * AuthorityUser entity class.
+     */
+
     @Id
     @Column
     private int authority_id;

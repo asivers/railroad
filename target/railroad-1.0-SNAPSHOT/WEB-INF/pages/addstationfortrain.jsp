@@ -39,8 +39,8 @@
             </div>
         </div>
         <div class="row" style="margin-left:1px; margin-right:1px">
-            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:10px;">Add</button>
-            <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:10px;">Back</a>
+            <button type="submit" class="btn btn-success col-sm-3 offset-sm-4" style="margin-bottom:1px;">Add</button>
+            <a href="/adminmain" class="btn btn-secondary col-sm-3 offset-sm-1 offset-right-sm-1" role="button" style="margin-bottom:1px;">Back</a>
         </div>
     </form>
 </div>

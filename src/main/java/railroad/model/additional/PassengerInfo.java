@@ -2,6 +2,10 @@ package railroad.model.additional;
 
 public class PassengerInfo {
 
+    /**
+     * PassengerInfo supportive data transfer class.
+     */
+
     private String firstName;
     private String secondName;
     private String birthDate;

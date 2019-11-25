@@ -38,14 +38,25 @@ public class StationServiceImpl implements StationService {
         this.trainDAO = trainDAO;
     }
 
+    /**
+     * Gets number of stations by train number.
+     *
+     * @param trainNumber train number
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public int stationsByTrainCount(int trainNumber) {
         return stationDAO.countByTrainNumber(trainNumber);
     }
 
+    /**
+     * Gets station's info list by train number.
+     *
+     * @param trainNumber train number
+     * @param page page number
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<StationTime> stationsByTrain(int trainNumber, int page) {
         int onPage = 8;
         List<Integer> stationIDs = stationDAO.getIdByTrainNumberList(trainNumber, page, onPage);
@@ -60,6 +71,12 @@ public class StationServiceImpl implements StationService {
         return stationsTimes;
     }
 
+    /**
+     * Checks if the station already exists.
+     * If not, adds it to database.
+     *
+     * @param stationName station name
+     */
     @Override
     @Transactional
     public boolean isExist(String stationName) {
@@ -74,11 +91,19 @@ public class StationServiceImpl implements StationService {
             return true;
     }
 
+    /**
+     * Checks if the station already exists for train.
+     * If not, adds relation between them.
+     *
+     * @param trainNumber train number
+     * @param stationName station name
+     * @param stopTime stop time
+     */
     @Override
     @Transactional
     public boolean isExistForTrain(int trainNumber, String stationName, String stopTime) {
         String tzStopTime = TimeSupport.LongToTime(TimeSupport.TimeToLong(stopTime) + 10800000);
-        List<Object> timesList = stationTrainDAO.getTimeByTrainNumberList(trainNumber);
+        List<Object> timesList = stationTrainDAO.getStopTimeByTrainNumberList(trainNumber);
         boolean newTime = true;
         for (Object x : timesList) {
             if (x.toString().substring(0, 5).equals(tzStopTime)) {
@@ -118,6 +143,34 @@ public class StationServiceImpl implements StationService {
                     return true;
             }
         }
+    }
+
+    /**
+     * Checks if the station already exists for train.
+     * If so, deletes relation between them.
+     *
+     * @param trainNumber train number
+     * @param stationName station name
+     */
+    @Override
+    @Transactional
+    public boolean isExistForTrainDelete(int trainNumber, String stationName) {
+        int isNewStation = stationDAO.countByStationName(stationName);
+        int stationID = 0;
+        int trainID = trainDAO.getIdByTrainNumberSingle(trainNumber);
+        if (isNewStation == 0) {
+            return false;
+        } else {
+            stationID = stationDAO.getIdByStationNameSingle(stationName);
+            int isByTrain = stationTrainDAO.countByStationIdAndTrainId(stationID, trainID);
+            if (isByTrain == 0)
+                return false;
+            else {
+                stationTrainDAO.deleteRelation(stationID, trainID);
+                return true;
+            }
+        }
+
     }
 
 }

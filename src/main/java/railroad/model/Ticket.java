@@ -7,6 +7,10 @@ import java.io.Serializable;
 @Table(name = "tickets")
 public class Ticket implements Serializable {
 
+    /**
+     * Ticket entity class.
+     */
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)

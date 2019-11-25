@@ -40,15 +40,25 @@ public class PassengerServiceImpl implements PassengerService {
     @Autowired
     public void setTrainDAO(TrainDAO trainDAO) { this.trainDAO = trainDAO; }
 
-
+    /**
+     * Gets number of passengers by train number
+     *
+     * @param trainNumber train number
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public int passengersByTrainCount(int trainNumber) {
         return passengerDAO.countByTrainNumber(trainNumber);
     }
 
+    /**
+     * Gets passenger's info list by train number
+     *
+     * @param trainNumber train number
+     * @param page page number
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<PassengerInfo> passengersByTrain(int trainNumber, int page) {
         int onPage = 8;
         List<Integer> passengerIDs = passengerDAO.getIdByTrainNumberList(trainNumber, page, onPage);
@@ -65,6 +75,16 @@ public class PassengerServiceImpl implements PassengerService {
         return passengerInfos;
     }
 
+    /**
+     * Checks if the passenger already on the train.
+     * If not, adds relation between them (ticket).
+     *
+     * @param firstName passenger first name
+     * @param secondName passenger second name
+     * @param birthDate passenger birth name
+     * @param trainNumber train number
+     * @param currentUserID current user's id
+     */
     @Override
     @Transactional
     public boolean isOnTrain(String firstName, String secondName, String birthDate, int trainNumber, int currentUserID) {

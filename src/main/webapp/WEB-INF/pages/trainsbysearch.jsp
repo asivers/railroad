@@ -86,40 +86,76 @@
             </div>
         </div>
     </c:forEach>
-    <c:set var = "LowerTime" value = "${LowerTime}"/>
-    <c:set var = "UpperTime" value = "${UpperTime}"/>
+    <c:set var = "LowerTime" value = "${LowerTimeString}"/>
+    <c:set var = "UpperTime" value = "${UpperTimeString}"/>
     <c:set var = "Page" value = "${Page}"/>
     <c:set var = "PagesCount" value = "${PagesCount}"/>
     <div class="row" style="margin-left:1px; margin-right:1px;">
-        <div class="col-1 offset-2 my-auto text-center">
+        <div class="col-1 my-auto text-center ${Page <= 3 ? "offset-3" : "offset-2"}">
             <form action="/trainsbysearch" method="POST">
                 <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
                 <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
-                <input type="time" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
-                <input type="time" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
-                <button type="submit" name="page" value="${Page - 1}" class="btn btn-link" style="font-weight:900; ${Page == 1 ? "display:none" : ""}"><<</button>
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="1" class="btn btn-link" style="font-weight:900; ${Page <= 2 ? "display:none" : ""}">1</button>
             </form>
         </div>
-        <div class="col-3 offset-1 offset-right-1 my-auto text-center">
+        <div class="col-1 my-auto text-center" style="${Page <= 3 ? "display:none" : ""}">
             <form action="/trainsbysearch" method="POST">
                 <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
                 <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
-                <input type="time" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
-                <input type="time" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
-                <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none">Page ${Page} of ${PagesCount}</button>
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none;">...</button>
             </form>
         </div>
         <div class="col-1 my-auto text-center">
             <form action="/trainsbysearch" method="POST">
                 <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
                 <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
-                <input type="time" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
-                <input type="time" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
-                <button type="submit" name="page" value="${Page + 1}" class="btn btn-link" style="font-weight:900; ${Page == PagesCount ? "display:none" : ""}">>></button>
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page - 1}" class="btn btn-link" style="font-weight:900; ${Page == 1 ? "display:none" : ""}">${Page - 1}</button>
             </form>
         </div>
-        <div class="col-1 offset-2">
-            <a href="/findtrain" class="btn btn-secondary" role="button" style="margin-left:5px">Back</a>
+        <div class="col-1 my-auto text-center">
+            <form action="/trainsbysearch" method="POST">
+                <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
+                <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none">${Page}</button>
+            </form>
+        </div>
+        <div class="col-1 my-auto text-center ${Page == (PagesCount - 2) ? "offset-right-1" : ""}">
+            <form action="/trainsbysearch" method="POST">
+                <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
+                <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page + 1}" class="btn btn-link" style="font-weight:900; ${Page == PagesCount ? "display:none" : ""}">${Page + 1}</button>
+            </form>
+        </div>
+        <div class="col-1 my-auto text-center" style="${Page >= (PagesCount - 2) ? "display:none" : ""}">
+            <form action="/trainsbysearch" method="POST">
+                <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
+                <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${Page}" class="btn btn-link" style="font-weight:500; color:black; text-decoration:none;">...</button>
+            </form>
+        </div>
+        <div class="col-1 my-auto text-center">
+            <form action="/trainsbysearch" method="POST">
+                <input type="text" name="departureStation" value="${DepartureStationName}" class="form-control" style="display:none">
+                <input type="text" name="arrivalStation" value="${ArrivalStationName}" class="form-control" style="display:none">
+                <input type="text" name="lowerTime" value="${LowerTime}" class="form-control" style="display:none">
+                <input type="text" name="upperTime" value="${UpperTime}" class="form-control" style="display:none">
+                <button type="submit" name="page" value="${PagesCount}" class="btn btn-link" style="font-weight:900; ${Page >= (PagesCount - 1) ? "display:none" : ""}">${PagesCount}</button>
+            </form>
+        </div>
+        <div class="col-1 offset-right-1 ${Page >= (PagesCount - 2) ? "offset-2" : "offset-1"}">
+            <a href="/findtrain" class="btn btn-secondary" role="button">Back</a>
         </div>
     </div>
 </div>

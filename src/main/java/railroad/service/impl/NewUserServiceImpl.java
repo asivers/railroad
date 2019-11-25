@@ -25,6 +25,13 @@ public class NewUserServiceImpl implements NewUserService {
         this.userDAO = userDAO;
     }
 
+    /**
+     * Checks if the user already exist.
+     * If not, adds it to database.
+     *
+     * @param username username
+     * @param hashedPassword hashed password
+     */
     @Override
     @Transactional
     public boolean isInDatabase(String username, String hashedPassword) {

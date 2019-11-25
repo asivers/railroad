@@ -13,6 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    /**
+     * Spring Security User details service.
+     */
+
     @Autowired
     private UserDAO userDAO;
 

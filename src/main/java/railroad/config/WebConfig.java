@@ -18,15 +18,21 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@Import({MessagingConfiguration.class, MessagingListenerConfiguration.class})
+@Import(MessagingConfiguration.class)
 @ComponentScan(basePackages = "railroad")
 public class WebConfig implements WebMvcConfigurer {
 
+    /**
+     * Resource folder.
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/res/**").addResourceLocations("/res/");
     }
 
+    /**
+     * Path and suffix for jsp.
+     */
     @Bean
     ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -35,6 +41,9 @@ public class WebConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
+    /**
+     * Resource not found exception.
+     */
     @Bean
     HandlerExceptionResolver customExceptionResolver () {
         SimpleMappingExceptionResolver s = new SimpleMappingExceptionResolver();

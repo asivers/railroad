@@ -25,11 +25,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+     * Password encoder.
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Access denied exception.
+     */
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         AccessDeniedHandlerImpl accessDeniedHandler = new AccessDeniedHandlerImpl();
@@ -37,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return accessDeniedHandler;
     }
 
+    /**
+     * DAO authentication provider.
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -50,11 +59,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    /**
+     * Access settings for user and admin.
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/adminmain", "/addstation", "/finishaddstation", "/addstationfortrain", "/finishaddstationfortrain", "/addtrain", "finishaddtrain", "/alltrains", "/choosetrain", "/passengersbytrain")
+                .antMatchers("/adminmain", "/addstation", "/finishaddstation", "/addstationfortrain", "/finishaddstationfortrain", "/deletestationfortrain", "/finishdeletestationfortrain", "/addtrain", "finishaddtrain", "/deletetrain", "/alltrains", "/choosetrain", "/passengersbytrain")
                 .access("hasRole('ROLE_ADMIN')")
                 .and()
 
@@ -64,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .authorizeRequests()
-                .antMatchers("/", "/signin", "/signup", "/res/**")
+                .antMatchers("/", "/signin", "/signup", "/403", "/404", "/res/**")
                 .permitAll()
                 .and()
 

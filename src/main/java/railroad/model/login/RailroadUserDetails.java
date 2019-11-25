@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class RailroadUserDetails implements UserDetails {
 
+    /**
+     * Spring security user details.
+     */
+
     private User user;
 
     public RailroadUserDetails(User user) {

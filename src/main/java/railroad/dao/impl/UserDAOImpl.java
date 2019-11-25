@@ -1,6 +1,5 @@
 package railroad.dao.impl;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,24 +17,45 @@ public class UserDAOImpl implements UserDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Gets user by its username.
+     *
+     * @param username username
+     */
     @Override
     @SuppressWarnings("unchecked")
     public User getUserByUsernameSingle(String username) {
         return sessionFactory.getCurrentSession().createQuery("FROM User AS u WHERE u.username = :username", User.class).setParameter("username", username).uniqueResult();
     }
 
+    /**
+     * Gets number of users by its username.
+     * If user exists, the result will be 1.
+     *
+     * @param username username
+     */
     @Override
     @SuppressWarnings("unchecked")
     public int countByUsername(String username) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT u.id FROM User AS u WHERE u.username = :username", Number.class).setParameter("username", username).list().size();
+        return sessionFactory.getCurrentSession().createQuery("SELECT u.id FROM User AS u WHERE u.username = :username").setParameter("username", username).list().size();
     }
 
+    /**
+     * Gets user's id by its username.
+     *
+     * @param username username
+     */
     @Override
     @SuppressWarnings("unchecked")
     public int getIdByUsernameSingle(String username) {
         return sessionFactory.getCurrentSession().createQuery("SELECT u.id FROM User AS u WHERE u.username = :username", Number.class).setParameter("username", username).getSingleResult().intValue();
     }
 
+    /**
+     * Adds user to database.
+     *
+     * @param newUser new user
+     */
     @Override
     @SuppressWarnings("unchecked")
     public void add(User newUser) {

@@ -28,14 +28,25 @@ public class TicketServiceImpl implements TicketService {
     @Autowired
     public void setPassengerDAO(PassengerDAO passengerDAO) { this.passengerDAO = passengerDAO; }
 
+    /**
+     * Gets number of tickets by user's id.
+     *
+     * @param userID user's id
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public int ticketsByUserCount(int userID) {
         return ticketDAO.countByUserId(userID);
     }
 
+    /**
+     * Gets ticket's info list by user's id.
+     *
+     * @param userID train number
+     * @param page page number
+     */
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<TicketInfo> ticketsByUser(int userID, int page) {
         int onPage = 8;
         List<Integer> ticketIDs = ticketDAO.getIdByUserIdList(userID, page, onPage);

@@ -1,9 +1,10 @@
 package railroad.model.additional;
 
-import javax.persistence.*;
-import java.sql.Time;
-
 public class TrainTimeTime {
+
+    /**
+     * TrainTimeTime supportive data transfer class.
+     */
 
     private int number;
     private String time1;

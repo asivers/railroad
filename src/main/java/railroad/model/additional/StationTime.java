@@ -1,8 +1,10 @@
 package railroad.model.additional;
 
-import javax.persistence.*;
-
 public class StationTime {
+
+    /**
+     * StationTime supportive data transfer class.
+     */
 
     private String station_name;
     private String time;

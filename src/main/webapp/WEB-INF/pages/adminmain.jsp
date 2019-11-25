@@ -33,7 +33,7 @@
     </div>
     <div class="row" style="margin-left:1px; margin-right:1px">
         <form action="/addtrain" method="GET" class="col-sm-6" style="margin-bottom:10px">
-            <button type="submit" class="btn btn-success col-sm-12">Add train</button>
+            <button type="submit" class="btn btn-success col-sm-12">Add/Update train</button>
         </form>
         <form action="/addstation" method="GET" class="col-sm-6" style="margin-bottom:10px">
             <button type="submit" class="btn btn-success col-sm-12">Add station</button>

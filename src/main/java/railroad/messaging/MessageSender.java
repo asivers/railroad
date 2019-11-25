@@ -13,15 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageSender {
 
+	/**
+	 * ActiveMQ message sender.
+	 */
+
 	@Autowired
 	JmsTemplate jmsTemplate;
 
-	public void sendMessage(final String order) {
+	public void sendMessage(final String message) {
 
 		jmsTemplate.send(new MessageCreator(){
 				@Override
 				public Message createMessage(Session session) throws JMSException{
-					ObjectMessage objectMessage = session.createObjectMessage(order);
+					ObjectMessage objectMessage = session.createObjectMessage(message);
 					return objectMessage;
 				}
 			});

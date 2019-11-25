@@ -8,6 +8,10 @@ import java.util.Date;
 @Table(name = "passengers")
 public class Passenger implements Serializable {
 
+    /**
+     * Passenger entity class.
+     */
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)

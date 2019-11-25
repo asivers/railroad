@@ -1,13 +1,10 @@
 package railroad.model;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,8 +12,9 @@ import java.util.Set;
 public class User implements Serializable {
 
     /**
-     *
+     * User entity class.
      */
+
     private static final long serialVersionUID = -9067986418908847017L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

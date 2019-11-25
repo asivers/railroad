@@ -2,6 +2,10 @@ package railroad.model.additional;
 
 public class TicketInfo {
 
+    /**
+     * TicketInfo supportive data transfer class.
+     */
+
     private int ticketID;
     private String firstName;
     private String secondName;

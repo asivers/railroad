@@ -7,6 +7,10 @@ import java.io.Serializable;
 @Table(name = "passengers_users")
 public class PassengerUser implements Serializable {
 
+    /**
+     * PassengerUser entity class.
+     */
+
     @Id
     @Column
     private int passenger_id;
