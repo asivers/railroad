@@ -94,7 +94,7 @@ public class MainController {
     @RequestMapping(value = "/createuser", method = RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("username") String username, @ModelAttribute("password") String password) {
         ModelAndView modelAndView = new ModelAndView();
-        if (username.isEmpty() || password.isEmpty()) {
+        if (!(isValidInput(username)) || !(isValidInput(password))) {
             modelAndView.setViewName("incorrectloginorpassword");
             log.error("incorrect login or password");
         }
@@ -716,7 +716,7 @@ public class MainController {
      * contain '/' symbols; false otherwise
      */
     public boolean isValidInput(String str) {
-        if (str == null || str.length() == 0)
+        if (str == null || str.length() == 0 || str.length() > 44)
             return false;
         else {
             for (char c : str.toCharArray())
