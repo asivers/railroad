@@ -36,7 +36,7 @@
         <form action="/deletestationfortrain" method="POST" class="col-sm-4" style="margin-bottom:10px">
             <button type="submit" name="train" value="${TrainNumber}" class="btn btn-danger col-sm-12">Delete station</button>
         </form>
-        <form action="/adminmain" method="POST" class="col-sm-4" style="margin-bottom:10px">
+        <form action="/adminmain" method="GET" class="col-sm-4" style="margin-bottom:10px">
             <button type="submit" class="btn btn-primary col-sm-12">Main page</button>
         </form>
     </div>
