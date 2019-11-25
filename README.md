@@ -1,7 +1,7 @@
 # Technical solution description
 
-* Main app: [railroad](https://github.com/asivers/railroad)
-* Schedule board app: [JSFWebSockets](https://github.com/asivers/JSFWebSockets)
+* Main app: [railroad](https://github.com/asivers/railroad) [ ![Codeship Status for asivers/railroad](https://app.codeship.com/projects/84fc0760-f1ec-0137-3abc-4288cc02ae40/status?branch=master)](https://app.codeship.com/projects/375707)
+* Schedule board app: [JSFWebSockets](https://github.com/asivers/JSFWebSockets) [ ![Codeship Status for asivers/railroad](https://app.codeship.com/projects/4fd88c00-f1ed-0137-5e34-028602bdcca6/status?branch=master)](https://app.codeship.com/projects/375709)
 
 ## Abstract
 The main application is simulating the operation of the information system of a railway company. There are user mode and administrator mode. The user has the opportunity to view trains at a given station, view stations along the train, view purchased tickets, and purchase tickets. The administrator has the opportunity to add stations and trains, delete stations and trains, view passengers registered on the train. Authorization is performed using Spring Security. Access the database is through Hibernate.
