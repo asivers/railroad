@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.dao.TrainDAOTest" time="0.048" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.dao.TrainDAOTest" time="0.028" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,14 +64,14 @@
   </properties>
   <testcase name="getIdByArrivalSearchList0" classname="railroad.dao.TrainDAOTest" time="0"/>
   <testcase name="getIdByStationNameList0" classname="railroad.dao.TrainDAOTest" time="0"/>
-  <testcase name="getIdByTrainNumberSingle0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="getIdByTrainNumberSingle0" classname="railroad.dao.TrainDAOTest" time="0.001"/>
   <testcase name="countByTrainNumber0" classname="railroad.dao.TrainDAOTest" time="0"/>
   <testcase name="isAppropriateBySearch0" classname="railroad.dao.TrainDAOTest" time="0"/>
   <testcase name="countAllTrains0" classname="railroad.dao.TrainDAOTest" time="0"/>
-  <testcase name="getTrainNumberByIdSingle0" classname="railroad.dao.TrainDAOTest" time="0.002"/>
-  <testcase name="getTrainNumberByTicketIdSingle0" classname="railroad.dao.TrainDAOTest" time="0.006"/>
-  <testcase name="getSeatsByIdSingle0" classname="railroad.dao.TrainDAOTest" time="0.004"/>
-  <testcase name="getTrainNumberList0" classname="railroad.dao.TrainDAOTest" time="0.004"/>
-  <testcase name="countByStationName0" classname="railroad.dao.TrainDAOTest" time="0.005"/>
-  <testcase name="getIdBySearchList0" classname="railroad.dao.TrainDAOTest" time="0.005"/>
+  <testcase name="getTrainNumberByIdSingle0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="getTrainNumberByTicketIdSingle0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="getSeatsByIdSingle0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="getTrainNumberList0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="countByStationName0" classname="railroad.dao.TrainDAOTest" time="0"/>
+  <testcase name="getIdBySearchList0" classname="railroad.dao.TrainDAOTest" time="0"/>
 </testsuite>

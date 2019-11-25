@@ -7,11 +7,10 @@ import org.springframework.context.ApplicationContextAware;
 
 import javax.websocket.server.ServerEndpointConfig;
 
+/**
+ * Spring application context.
+ */
 public class CustomSpringConfigurator extends ServerEndpointConfig.Configurator implements ApplicationContextAware {
-
-    /**
-     * Spring application context.
-     */
 
     private static volatile BeanFactory context;
 

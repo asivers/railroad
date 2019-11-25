@@ -9,12 +9,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.Filter;
 
+/**
+ * Application Initializer.
+ */
 @Configuration
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-    /**
-     * Application Initializer.
-     */
 
     @Override
     protected Class<?>[] getRootConfigClasses() {

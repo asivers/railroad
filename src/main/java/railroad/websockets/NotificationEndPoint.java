@@ -15,15 +15,13 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-
+/**
+ * EndPoint for listening events from TimeBoard app
+ */
 @Service
 @Configurable
 @ServerEndpoint(value = "/notification", configurator = CustomSpringConfigurator.class)
 public class NotificationEndPoint implements Serializable {
-
-  /**
-   * EndPoint for listening events from TimeBoard app
-   */
 
   private static final Logger log = Logger.getLogger(NotificationEndPoint.class);
 

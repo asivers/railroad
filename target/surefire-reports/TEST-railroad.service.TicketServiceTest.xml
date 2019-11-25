@@ -63,5 +63,5 @@
     <property name="java.class.version" value="56.0"/>
   </properties>
   <testcase name="ticketsByUser0" classname="railroad.service.TicketServiceTest" time="0"/>
-  <testcase name="ticketsByUserCount0" classname="railroad.service.TicketServiceTest" time="0"/>
+  <testcase name="ticketsByUserCount0" classname="railroad.service.TicketServiceTest" time="0.001"/>
 </testsuite>

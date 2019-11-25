@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.dao.PassengerDAOTest" time="6.188" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.dao.PassengerDAOTest" time="7.542" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -62,14 +62,14 @@
     <property name="library.jansi.path" value="C:\Users\siver\Desktop\prog\apache-maven-3.6.2\bin\..\lib\jansi-native"/>
     <property name="java.class.version" value="56.0"/>
   </properties>
-  <testcase name="getBirthDateByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.292"/>
-  <testcase name="getSecondNameByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.013"/>
-  <testcase name="getFirstNameByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.006"/>
-  <testcase name="getSecondNameByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.005"/>
-  <testcase name="getBirthDateByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.005"/>
-  <testcase name="countByParameters0" classname="railroad.dao.PassengerDAOTest" time="0.01"/>
-  <testcase name="getIdByParametersSingle0" classname="railroad.dao.PassengerDAOTest" time="0.004"/>
-  <testcase name="countByTrainNumber0" classname="railroad.dao.PassengerDAOTest" time="0.007"/>
-  <testcase name="getIdByTrainNumberList0" classname="railroad.dao.PassengerDAOTest" time="0.003"/>
-  <testcase name="getFirstNameByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.004"/>
+  <testcase name="getBirthDateByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.438"/>
+  <testcase name="getSecondNameByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.026"/>
+  <testcase name="getFirstNameByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.015"/>
+  <testcase name="getSecondNameByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.009"/>
+  <testcase name="getBirthDateByTicketIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.008"/>
+  <testcase name="countByParameters0" classname="railroad.dao.PassengerDAOTest" time="0.016"/>
+  <testcase name="getIdByParametersSingle0" classname="railroad.dao.PassengerDAOTest" time="0.008"/>
+  <testcase name="countByTrainNumber0" classname="railroad.dao.PassengerDAOTest" time="0.009"/>
+  <testcase name="getIdByTrainNumberList0" classname="railroad.dao.PassengerDAOTest" time="0.005"/>
+  <testcase name="getFirstNameByIdSingle0" classname="railroad.dao.PassengerDAOTest" time="0.006"/>
 </testsuite>

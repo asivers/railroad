@@ -10,12 +10,11 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
+/**
+ * ActiveMQ message sender.
+ */
 @Component
 public class MessageSender {
-
-	/**
-	 * ActiveMQ message sender.
-	 */
 
 	@Autowired
 	JmsTemplate jmsTemplate;
