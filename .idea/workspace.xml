@@ -8,14 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="202a6faf-06ef-401e-8069-539666470580" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/PassengerDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/PassengerDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/PassengerUserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/PassengerUserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationTrainDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/StationTrainDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TicketDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TicketDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TrainDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/TrainDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/railroad/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addtrain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addtrain.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/pages/addtrain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/railroad-1.0-SNAPSHOT/WEB-INF/pages/addtrain.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -464,6 +458,9 @@
       <workItem from="1574713537570" duration="41000" />
       <workItem from="1574806722251" duration="596000" />
       <workItem from="1574807543278" duration="1133000" />
+      <workItem from="1574809020205" duration="5000" />
+      <workItem from="1574809969949" duration="2031000" />
+      <workItem from="1574812014815" duration="17000" />
     </task>
     <servers />
   </component>
