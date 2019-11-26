@@ -91,7 +91,8 @@ public class MainController {
      * @param password password
      */
     @RequestMapping(value = "/createuser", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("username") String username, @ModelAttribute("password") String password) {
+    public ModelAndView createUser(@ModelAttribute("username") String username,
+                                   @ModelAttribute("password") String password) {
         ModelAndView modelAndView = new ModelAndView();
         if (!(isValidInput(username)) || !(isValidInput(password))) {
             modelAndView.setViewName("incorrectloginorpassword");
@@ -216,7 +217,8 @@ public class MainController {
      * @param page page number
      */
     @RequestMapping(value = "/trainsbystation", method = RequestMethod.POST)
-    public ModelAndView trainsByStation(@ModelAttribute("station") String stationName, @ModelAttribute("page") int page) {
+    public ModelAndView trainsByStation(@ModelAttribute("station") String stationName,
+                                        @ModelAttribute("page") int page) {
         ModelAndView modelAndView = new ModelAndView();
         if (isValidInput(stationName)) {
             int trainsCount = trainService.trainsByStationCount(stationName);
@@ -248,7 +250,8 @@ public class MainController {
      * @param page page number
      */
     @RequestMapping(value = "/stationsbytrain", method = RequestMethod.POST)
-    public ModelAndView stationsByTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("page") int page) {
+    public ModelAndView stationsByTrain(@ModelAttribute("train") int trainNumber,
+                                        @ModelAttribute("page") int page) {
         ModelAndView modelAndView = new ModelAndView();
         int stationsCount = stationService.stationsByTrainCount(trainNumber);
         if (stationsCount == 0) {
@@ -289,7 +292,11 @@ public class MainController {
      * @param page page number
      */
     @RequestMapping(value = "/trainsbysearch", method = RequestMethod.POST)
-    public ModelAndView trainsBySearch(@ModelAttribute("departureStation") String departureStationName, @ModelAttribute("arrivalStation") String arrivalStationName, @ModelAttribute("lowerTime") String lowerTimeString, @ModelAttribute("upperTime") String upperTimeString, @RequestParam(defaultValue = "1") int page) {
+    public ModelAndView trainsBySearch(@ModelAttribute("departureStation") String departureStationName,
+                                       @ModelAttribute("arrivalStation") String arrivalStationName,
+                                       @ModelAttribute("lowerTime") String lowerTimeString,
+                                       @ModelAttribute("upperTime") String upperTimeString,
+                                       @RequestParam(defaultValue = "1") int page) {
         ModelAndView modelAndView = new ModelAndView();
         if (isValidInput(departureStationName) && isValidInput(arrivalStationName) && isTime(lowerTimeString) && isTime(upperTimeString)) {
             int trainsCount = trainService.trainsBySearchCount(departureStationName, arrivalStationName, lowerTimeString, upperTimeString);
@@ -324,7 +331,8 @@ public class MainController {
      * @param departureTime departure time
      */
     @RequestMapping(value = "/buyticket", method = RequestMethod.POST)
-    public ModelAndView buyTicket(@ModelAttribute("train") int trainNumber, @ModelAttribute("departureTime") String departureTime) {
+    public ModelAndView buyTicket(@ModelAttribute("train") int trainNumber,
+                                  @ModelAttribute("departureTime") String departureTime) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("buyticket");
         modelAndView.addObject("TrainNumber", trainNumber);
@@ -345,7 +353,12 @@ public class MainController {
      * @param departureTime departure time
      */
     @RequestMapping(value = "/finishbuyticket", method = RequestMethod.POST)
-    public ModelAndView finishBuyTicket(@ModelAttribute("currentUserID") int currentUserID, @ModelAttribute("firstName") String firstName, @ModelAttribute("secondName") String secondName, @ModelAttribute("birthDate") String birthDate, @ModelAttribute("trainNumber") int trainNumber, @ModelAttribute("departureTime") String departureTime) {
+    public ModelAndView finishBuyTicket(@ModelAttribute("currentUserID") int currentUserID,
+                                        @ModelAttribute("firstName") String firstName,
+                                        @ModelAttribute("secondName") String secondName,
+                                        @ModelAttribute("birthDate") String birthDate,
+                                        @ModelAttribute("trainNumber") int trainNumber,
+                                        @ModelAttribute("departureTime") String departureTime) {
         ModelAndView modelAndView = new ModelAndView();
         if (isValidInput(firstName) && isValidInput(secondName) && isBirthDate(birthDate)) {
             String currentTime = (new Date()).toString().substring(11, 16);
@@ -380,7 +393,8 @@ public class MainController {
      * @param page page number
      */
     @RequestMapping(value = "/mytickets", method = RequestMethod.POST)
-    public ModelAndView ticketsByUser(@ModelAttribute("currentUserID") int currentUserID, @ModelAttribute("page") int page) {
+    public ModelAndView ticketsByUser(@ModelAttribute("currentUserID") int currentUserID,
+                                      @ModelAttribute("page") int page) {
         ModelAndView modelAndView = new ModelAndView();
         int ticketsCount = ticketService.ticketsByUserCount(currentUserID);
         if (ticketsCount == 0) {
@@ -427,7 +441,8 @@ public class MainController {
      * @param seats seats number
      */
     @RequestMapping(value = "/finishaddtrain", method = RequestMethod.POST)
-    public ModelAndView finishAddTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("seats") int seats) {
+    public ModelAndView finishAddTrain(@ModelAttribute("train") int trainNumber,
+                                       @ModelAttribute("seats") int seats) {
         ModelAndView modelAndView = new ModelAndView();
         if (trainNumber >= 100000 && trainNumber <= 999999 && seats > 0 && seats < 10000) {
             if (!(trainService.isExist(trainNumber, seats))) {
@@ -470,7 +485,9 @@ public class MainController {
      * @param stopTime stop time
      */
     @RequestMapping(value = "/finishaddstationfortrain", method = RequestMethod.POST)
-    public ModelAndView finishAddStationForTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("station") String stationName, @ModelAttribute("stopTime") String stopTime) {
+    public ModelAndView finishAddStationForTrain(@ModelAttribute("train") int trainNumber,
+                                                 @ModelAttribute("station") String stationName,
+                                                 @ModelAttribute("stopTime") String stopTime) {
         ModelAndView modelAndView = new ModelAndView();
         if (isValidInput(stationName)) {
             if (!(stationService.isExistForTrain(trainNumber, stationName, stopTime))) {
@@ -515,7 +532,8 @@ public class MainController {
      * @param stationName stationName
      */
     @RequestMapping(value = "/finishdeletestationfortrain", method = RequestMethod.POST)
-    public ModelAndView finishDeleteStationForTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("station") String stationName) {
+    public ModelAndView finishDeleteStationForTrain(@ModelAttribute("train") int trainNumber,
+                                                    @ModelAttribute("station") String stationName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("trainaddsuccess");
         if (stationService.isExistForTrainDelete(trainNumber, stationName)) {
@@ -612,7 +630,8 @@ public class MainController {
      * @param page page number
      */
     @RequestMapping(value = "/passengersbytrain", method = RequestMethod.POST)
-    public ModelAndView passengersByTrain(@ModelAttribute("train") int trainNumber, @ModelAttribute("page") int page) {
+    public ModelAndView passengersByTrain(@ModelAttribute("train") int trainNumber,
+                                          @ModelAttribute("page") int page) {
         ModelAndView modelAndView = new ModelAndView();
         int passengersCount = passengerService.passengersByTrainCount(trainNumber);
         if (passengersCount == 0) {

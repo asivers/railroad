@@ -27,7 +27,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int countByTrainNumber(int trainNumber) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).list().size();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber")
+                .setParameter("trainNumber", trainNumber).list().size();
     }
 
     /**
@@ -40,7 +42,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<Integer> getIdByTrainNumberList(int trainNumber, int page, int onPage) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber ORDER BY st.time").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.id FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber ORDER BY st.time")
+                .setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
     }
 
     /**
@@ -53,7 +57,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<String> getStationNameByTrainNumberList(int trainNumber, int page, int onPage) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.station_name FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber ORDER BY st.time").setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.station_name FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.number = :trainNumber ORDER BY st.time")
+                .setParameter("trainNumber", trainNumber).setFirstResult(onPage * (page - 1)).setMaxResults(onPage).list();
     }
 
     /**
@@ -64,7 +70,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int getIdByStationNameSingle(String stationName) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class).setParameter("stationName", stationName).getSingleResult().intValue();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName", Number.class)
+                .setParameter("stationName", stationName).getSingleResult().intValue();
     }
 
     /**
@@ -75,7 +83,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public String getStationNameByIdSingle(int id) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.station_name FROM Station AS s WHERE s.id = :id").setParameter("id", id).getSingleResult().toString();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.station_name FROM Station AS s WHERE s.id = :id")
+                .setParameter("id", id).getSingleResult().toString();
     }
 
     /**
@@ -87,7 +97,9 @@ public class StationDAOImpl implements StationDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int countByStationName(String stationName) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName").setParameter("stationName", stationName).list().size();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT s.id FROM Station AS s WHERE s.station_name = :stationName")
+                .setParameter("stationName", stationName).list().size();
     }
 
     /**

@@ -25,7 +25,9 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public User getUserByUsernameSingle(String username) {
-        return sessionFactory.getCurrentSession().createQuery("FROM User AS u WHERE u.username = :username", User.class).setParameter("username", username).uniqueResult();
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM User AS u WHERE u.username = :username", User.class)
+                .setParameter("username", username).uniqueResult();
     }
 
     /**
@@ -37,7 +39,9 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int countByUsername(String username) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT u.id FROM User AS u WHERE u.username = :username").setParameter("username", username).list().size();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT u.id FROM User AS u WHERE u.username = :username")
+                .setParameter("username", username).list().size();
     }
 
     /**
@@ -48,7 +52,9 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int getIdByUsernameSingle(String username) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT u.id FROM User AS u WHERE u.username = :username", Number.class).setParameter("username", username).getSingleResult().intValue();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT u.id FROM User AS u WHERE u.username = :username", Number.class)
+                .setParameter("username", username).getSingleResult().intValue();
     }
 
     /**

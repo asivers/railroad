@@ -37,7 +37,11 @@ public class PassengerUserDAOImpl implements PassengerUserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int countRelations(int passenger_id, int user_id) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT pu.user_id FROM PassengerUser AS pu WHERE pu.passenger_id = :passengerID AND pu.user_id = :currentUserID").setParameter("passengerID", passenger_id).setParameter("currentUserID", user_id).list().size();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT pu.user_id FROM PassengerUser AS pu WHERE pu.passenger_id = :passengerID AND pu.user_id = :currentUserID")
+                .setParameter("passengerID", passenger_id)
+                .setParameter("currentUserID", user_id)
+                .list().size();
     }
 
 }

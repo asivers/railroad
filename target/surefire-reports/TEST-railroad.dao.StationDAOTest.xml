@@ -66,6 +66,6 @@
   <testcase name="getIdByTrainNumberList0" classname="railroad.dao.StationDAOTest" time="0"/>
   <testcase name="getStationNameByIdSingle0" classname="railroad.dao.StationDAOTest" time="0"/>
   <testcase name="getIdByStationNameSingle0" classname="railroad.dao.StationDAOTest" time="0"/>
-  <testcase name="countByStationName0" classname="railroad.dao.StationDAOTest" time="0.001"/>
+  <testcase name="countByStationName0" classname="railroad.dao.StationDAOTest" time="0"/>
   <testcase name="getStationNameByTrainNumberList0" classname="railroad.dao.StationDAOTest" time="0"/>
 </testsuite>

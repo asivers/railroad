@@ -29,7 +29,11 @@ public class StationTrainDAOImpl implements StationTrainDAO {
     @Override
     @SuppressWarnings("unchecked")
     public int countByStationIdAndTrainId(int station_id, int train_id) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT st.station_id FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID").setParameter("stationID", station_id).setParameter("trainID", train_id).list().size();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT st.station_id FROM StationTrain AS st WHERE st.station_id = :stationID AND st.train_id = :trainID")
+                .setParameter("stationID", station_id)
+                .setParameter("trainID", train_id)
+                .list().size();
     }
 
     /**
@@ -40,7 +44,9 @@ public class StationTrainDAOImpl implements StationTrainDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<Object> getStopTimeByTrainNumberList(int trainNumber) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT st.time FROM StationTrain AS st INNER JOIN Train AS t ON st.train_id = t.id WHERE t.number = :trainNumber").setParameter("trainNumber", trainNumber).list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT st.time FROM StationTrain AS st INNER JOIN Train AS t ON st.train_id = t.id WHERE t.number = :trainNumber")
+                .setParameter("trainNumber", trainNumber).list();
     }
 
     /**
@@ -52,7 +58,11 @@ public class StationTrainDAOImpl implements StationTrainDAO {
     @Override
     @SuppressWarnings("unchecked")
     public String getStopTimeByStationIdAndTrainNumberSingle(int id, int trainNumber) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.id = :id AND t.number = :trainNumber").setParameter("id", id).setParameter("trainNumber", trainNumber).getSingleResult().toString();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE s.id = :id AND t.number = :trainNumber")
+                .setParameter("id", id)
+                .setParameter("trainNumber", trainNumber)
+                .getSingleResult().toString();
     }
 
     /**
@@ -64,7 +74,11 @@ public class StationTrainDAOImpl implements StationTrainDAO {
     @Override
     @SuppressWarnings("unchecked")
     public String getStopTimeByTrainIdAndStationNameSingle(int id, String stationName) {
-        return sessionFactory.getCurrentSession().createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :stationName").setParameter("id", id).setParameter("stationName", stationName).getSingleResult().toString();
+        return sessionFactory.getCurrentSession()
+                .createQuery("SELECT st.time FROM Train AS t INNER JOIN StationTrain AS st ON t.id = st.train_id INNER JOIN Station AS s ON st.station_id = s.id WHERE t.id = :id AND s.station_name = :stationName")
+                .setParameter("id", id)
+                .setParameter("stationName", stationName)
+                .getSingleResult().toString();
     }
 
     /**
@@ -76,7 +90,11 @@ public class StationTrainDAOImpl implements StationTrainDAO {
     @Override
     @SuppressWarnings("unchecked")
     public void deleteRelation(int station_id, int train_id) {
-        sessionFactory.getCurrentSession().createQuery("DELETE FROM StationTrain AS st WHERE st.station_id = :station_id AND st.train_id = :train_id").setParameter("station_id", station_id).setParameter("train_id", train_id).executeUpdate();
+        sessionFactory.getCurrentSession()
+                .createQuery("DELETE FROM StationTrain AS st WHERE st.station_id = :station_id AND st.train_id = :train_id")
+                .setParameter("station_id", station_id)
+                .setParameter("train_id", train_id)
+                .executeUpdate();
     }
 
     /**

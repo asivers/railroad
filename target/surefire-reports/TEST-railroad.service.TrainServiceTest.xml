@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.service.TrainServiceTest" time="0.048" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="railroad.service.TrainServiceTest" time="0.021" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -67,7 +67,7 @@
   <testcase name="allTrainsCount0" classname="railroad.service.TrainServiceTest" time="0"/>
   <testcase name="allTrains0" classname="railroad.service.TrainServiceTest" time="0"/>
   <testcase name="trainsByStation0" classname="railroad.service.TrainServiceTest" time="0"/>
-  <testcase name="trainsByStationCount0" classname="railroad.service.TrainServiceTest" time="0.004"/>
-  <testcase name="trainsBySearchCount0" classname="railroad.service.TrainServiceTest" time="0.02"/>
-  <testcase name="isExist" classname="railroad.service.TrainServiceTest" time="0.003"/>
+  <testcase name="trainsByStationCount0" classname="railroad.service.TrainServiceTest" time="0"/>
+  <testcase name="trainsBySearchCount0" classname="railroad.service.TrainServiceTest" time="0.002"/>
+  <testcase name="isExist" classname="railroad.service.TrainServiceTest" time="0.002"/>
 </testsuite>
